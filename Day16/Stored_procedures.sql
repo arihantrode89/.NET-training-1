@@ -1,5 +1,6 @@
 Select * from Employee;
 
+
 --without paramter
 Create Procedure Sp_Get_Employees
 As
@@ -38,3 +39,11 @@ Exec GetEmpCountByGender 'M' ,@emptotal output
 print @emptotalS
 
 
+Create Proc GetName
+@Gender char
+as
+begin
+	Select Name from Employee where Gender = @Gender;
+end
+
+GetName 'M';
