@@ -37,30 +37,30 @@ namespace CustomExceptionTask
                 TransactionType = char.Parse(Console.ReadLine());
                 Console.WriteLine("Enter transaction amount");
                 TransactionAmount = double.Parse(Console.ReadLine());
-                if (Balance < 500)
+                
+                if(TransactionType == 'd')
                 {
-                    TransactionAmount = 0;
-                    throw new BankException();
-                }
-                else
-                {
-                    if(TransactionType == 'd')
+                    if (TransactionAmount < Balance)
                     {
-                        if (TransactionAmount < Balance)
+                        Balance -= TransactionAmount;
+
+                        Console.WriteLine("Money is Debited");
+                        if (Balance < 500)
                         {
-                            Balance -= TransactionAmount;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Balance is Insufficient");
+                            throw new BankException();
                         }
                     }
                     else
                     {
-                        Balance+=TransactionAmount;
+                            Console.WriteLine("Balance is Insufficient");
                     }
                 }
+                else
+                {
+                        Balance+=TransactionAmount;
+                }
             }
+        
             catch(BankException e)
             {
                 e.MinBalance();
