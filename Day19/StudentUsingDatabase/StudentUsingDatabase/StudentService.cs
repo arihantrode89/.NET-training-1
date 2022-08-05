@@ -32,6 +32,13 @@ namespace StudentUsingDatabase
             }
         }
 
+        public void Update(string col, int id)
+        {
+            Console.WriteLine($"Enter {col}:");
+            string str = $"Update StudentDetails set {col} = '{Console.ReadLine()}' where Id = {id}";
+            SqlCommand query = new SqlCommand(str, conn);
+            query.ExecuteNonQuery();
+        }
         public bool UpdateStudent(int id)
         {
             conn.Open();
@@ -44,28 +51,16 @@ namespace StudentUsingDatabase
                 switch (ch)
                 {
                     case 1:
-                        Console.WriteLine("Enter Name:");
-                        string str = $"Update StudentDetails set Name = '{Console.ReadLine()}' where Id = {id}";
-                        SqlCommand query = new SqlCommand(str, conn);
-                        query.ExecuteNonQuery();
+                        Update("Name", id);
                         return true;
                     case 2:
-                        Console.WriteLine("Enter Address:");
-                        string str1 = $"Update StudentDetails set Address = '{Console.ReadLine()}' where Id = {id}";
-                        SqlCommand query1 = new SqlCommand(str1, conn);
-                        query1.ExecuteNonQuery();
+                        Update("Address", id);
                         return true;
                     case 3:
-                        Console.WriteLine("Enter Obtained Marsks:");
-                        string str2 = $"Update StudentDetails set Obtained_Marks = {float.Parse(Console.ReadLine())} where Id = {id}";
-                        SqlCommand query2 = new SqlCommand(str2, conn);
-                        query2.ExecuteNonQuery();
+                        Update("Obtained_Marks", id);
                         return true;
                     case 4:
-                        Console.WriteLine("Enter Total Marks:");
-                        string str3 = $"Update StudentDetails set Total_Marks = {float.Parse(Console.ReadLine())} where Id = {id}";
-                        SqlCommand query3 = new SqlCommand(str3, conn);
-                        query3.ExecuteNonQuery();
+                        Update("Total_Marks", id);
                         return true;
                     default:
                         Console.WriteLine("Wrong Choice");
