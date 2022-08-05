@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delegate_event_revise", "Delegate_event_revise\Delegate_event_revise.csproj", "{B551C954-980B-4698-A6F6-1C74EDD96BAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B551C954-980B-4698-A6F6-1C74EDD96BAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B551C954-980B-4698-A6F6-1C74EDD96BAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B551C954-980B-4698-A6F6-1C74EDD96BAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B551C954-980B-4698-A6F6-1C74EDD96BAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEE96189-B0E6-4522-94E1-50584861D610}
+	EndGlobalSection
+EndGlobal
