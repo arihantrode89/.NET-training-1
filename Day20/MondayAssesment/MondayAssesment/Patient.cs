@@ -108,7 +108,7 @@ namespace MondayAssesment
         }
         public string GenerateId()
         {
-            return Name.Substring(0,2) + Room.Substring(2);
+            return Name.Substring(0,2) + Room.Substring(0,1)+ Room.Substring(2);
         }
 
     }
