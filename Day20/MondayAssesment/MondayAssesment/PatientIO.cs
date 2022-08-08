@@ -87,7 +87,6 @@ namespace MondayAssesment
 
         public void ShowDetails()
         {
-            Console.WriteLine("Following are Patients Details:\n");
             patientservice.ShowPatientDetails();
             Console.WriteLine("".PadLeft(30, '-'));
 

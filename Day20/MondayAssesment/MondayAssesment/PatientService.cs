@@ -121,13 +121,32 @@ namespace MondayAssesment
 
         public void ShowPatientDetails()
         {
-            foreach (Patient p in patients) 
+            try
             {
-            
-                Console.WriteLine($"Id:{p.Id}\nName:{p.Name}\nAge:{p.Age}\n" +
-                    $"Address:{p.Address}\nDoctor-In-Charge:{p.Address}\nRoom:{p.Room}");
+                if (patients.Count!=0)
+                {
+                    Console.WriteLine("Following are Patients Details:\n");
+                    foreach (Patient p in patients)
+                    {
 
-                Console.WriteLine("".PadLeft(30, '-'));
+                        Console.WriteLine($"Id:{p.Id}\nName:{p.Name}\nAge:{p.Age}\n" +
+                            $"Address:{p.Address}\nDoctor-In-Charge:{p.Address}\nRoom:{p.Room}");
+
+                        Console.WriteLine("".PadLeft(30, '-'));
+                    }
+                }
+                else
+                {
+                    throw new PatientException();
+                }
+            }
+            catch(PatientException pe)
+            {
+                pe.EmptyList();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
 

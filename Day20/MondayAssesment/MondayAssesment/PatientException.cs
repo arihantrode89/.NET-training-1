@@ -12,5 +12,10 @@ namespace MondayAssesment
         {
             Console.WriteLine("Invalid Patient Id");
         }
+
+        public void EmptyList()
+        {
+            Console.WriteLine("Patient List is Empty");
+        }
     }
 }
