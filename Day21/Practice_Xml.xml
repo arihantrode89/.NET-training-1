@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Departments>
+	<Department>
+		<Name>HR</Name>
+		<Dept_Head>
+			Jatinder Singh
+		</Dept_Head>
+		<Employee>
+			<Name>Mrinalini</Name>
+			<Role>Recruiter</Role>
+		</Employee>
+		<Employee>
+			<Name>Ria</Name>
+			<Role>HRBP</Role>
+		</Employee>
+		<Employee>
+			<Name>Pinki</Name>
+			<Role>Recruiter</Role>
+		</Employee>
+	</Department>
+	<Department>
+		<Name>Learning and Development</Name>
+		<Dept_Head>
+			Sanjeev Azad
+		</Dept_Head>
+		<Employee>
+			<Name>Ankit</Name>
+			<Role>Assistant Manager</Role>
+		</Employee>
+		<Employee>
+			<Name>Harsh</Name>
+			<Role>Assistant Manager</Role>
+		</Employee>
+		<Employee>
+			<Name>Annwesa</Name>
+			<Role>Strategy Analyst</Role>
+		</Employee>
+	</Department>
+</Departments>

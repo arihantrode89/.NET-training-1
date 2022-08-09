@@ -221,6 +221,16 @@ namespace Linq_Examples
                     Console.WriteLine(item2.dept.ToString()+'-'+item2.Age);
                 }
             }
+            Console.WriteLine("".PadLeft(30,'-'));
+            var Average = dept.GroupBy(s => s.dept).Where(s => s.Average(s1 => s1.Age) > 22);
+            foreach(var item in Average)
+            {
+                Console.WriteLine($"dept:{item.Key}");
+                foreach( var item2 in item)
+                {
+                    Console.WriteLine($"{item2.Age} {item2.dept}");
+                }
+            }
 
         }
     }

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Department>
+	<HR>
+		<Dept_Head>
+			Jatinder Singh
+		</Dept_Head>
+		<Employee gender="female">
+			<Name>Mrinalini</Name>
+			<Role>Recruiter</Role>
+		</Employee>
+		<Employee gender="female">
+			<Name>Ria</Name>
+			<Role>HRBP</Role>
+		</Employee>
+		<Employee gender="female">
+			<Name>Pinki</Name>
+			<Role>Recruiter</Role>
+		</Employee>
+	</HR>
+	<LearningAndDevlopement>
+		<Dept_Head>
+			Sanjeev Azad
+		</Dept_Head>
+		<Employee gender="Male">
+			<Name>Ankit</Name>
+			<Role>Assistant Manager</Role>
+		</Employee>
+		<Employee gender="male">
+			<Name>Harsh</Name>
+			<Role>Assistant Manager</Role>
+		</Employee>
+		<Employee gender="female">
+			<Name>Anwesa</Name>
+			<Role>Strategy Analyst</Role>
+		</Employee>
+	</LearningAndDevlopement>
+	<Development category="Dot_Net">
+		<Dept_Head>
+			Shardha K
+		</Dept_Head>
+		<Employee gender="Male">
+			<Name>Arihant</Name>
+			<Role>Jr Developer</Role>
+		</Employee>
+		<Employee gender="Male">
+			<Name>Agastya</Name>
+			<Role>Sr Developer</Role>
+		</Employee>
+		<Employee gender="female">
+			<Name>Mihika</Name>
+			<Role>Sr Architect</Role>
+		</Employee>
+	</Development>
+</Department>
