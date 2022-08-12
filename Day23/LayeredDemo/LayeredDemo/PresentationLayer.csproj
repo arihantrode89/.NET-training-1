@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{66EA1B27-650B-4AB6-8E80-A1772E9F0AB0}</ProjectGuid>
+    <ProjectGuid>{8966F883-15CA-4A3B-87BB-ABECB61393CC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ADO.NetWithTwoTables</RootNamespace>
-    <AssemblyName>ADO.NetWithTwoTables</AssemblyName>
+    <RootNamespace>LayeredDemo</RootNamespace>
+    <AssemblyName>LayeredDemo</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,18 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmpDeptExceptions.cs" />
-    <Compile Include="IEmpdept.cs" />
-    <Compile Include="EmpDeptManagement.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EmpDeptIO.cs" />
-    <Compile Include="EmpDeptService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{24d7bf4b-c623-47ee-b934-29778b58c3f1}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

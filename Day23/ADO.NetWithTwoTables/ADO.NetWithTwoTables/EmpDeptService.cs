@@ -18,12 +18,14 @@ namespace ADO.NetWithTwoTables
             {
                 string dept = $"Select dept_no from Department where dept_name='{Dept}'";
                 SqlCommand query = new SqlCommand(dept,conn);
-                int Dept_no = (int)query.ExecuteScalar();
-                if(Dept_no > 0)
+                int? Dept_no = null;
+                Dept_no = (int)query.ExecuteScalar();
+                if(Dept_no != null)
                 {
                     string str = $"Insert into Employee values('{Id}','{Name}','{Phone}','{Email}','{Role}','{Dob}','{Gender}','{Band}','{Grade}','{Sal}','{Doj}','{Dept_no}')";
                     SqlCommand cmd1 = new SqlCommand(str,conn);
-                    cmd1.ExecuteNonQuery();
+                    int count = cmd1.ExecuteNonQuery();
+
                 }
                 else
                 {
@@ -47,6 +49,39 @@ namespace ADO.NetWithTwoTables
             }
         }
 
+        public void AddDepartment(string dept_name,string location)
+        {
+            conn.Open();
+            try
+            {
+                string query = $"Insert into Department values('{dept_name}','{location}')";
+                SqlCommand cmd = new SqlCommand(query,conn);
+                int count = cmd.ExecuteNonQuery();
+                if(count > 0)
+                {
+                    Console.WriteLine("Data Inserted Successfully");
+                }
+                else
+                {
+                    throw new EmpDeptExceptions();
+                }
+            }
+            catch (EmpDeptExceptions e)
+            {
+                e.InsertionError();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+        }
         public bool DeleteDetails(int id)
         {
             conn.Open();

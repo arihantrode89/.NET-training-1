@@ -16,5 +16,10 @@ namespace ADO.NetWithTwoTables
         {
             Console.WriteLine("Empty Database");
         }
+
+        public void InsertionError()
+        {
+            Console.WriteLine("Error while inserting data");
+        }
     }
 }
