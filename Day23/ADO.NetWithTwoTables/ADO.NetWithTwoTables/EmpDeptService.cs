@@ -87,7 +87,7 @@ namespace ADO.NetWithTwoTables
                     {
                         for (int i = 0; i < reader.FieldCount; i++)
                         {
-                            Console.WriteLine($"{reader[i]}");
+                            Console.WriteLine($"{reader.GetName(i)}: {reader[i]}");
                         }
                         Console.WriteLine("".PadLeft(30, '-'));
                     }
@@ -131,7 +131,7 @@ namespace ADO.NetWithTwoTables
                         for (int i = 0; i < reader.FieldCount; i++)
                         {
 
-                            Console.WriteLine($"{reader[i]}");
+                            Console.WriteLine($"{reader.GetName(i)}: {reader[i]}");
                         }
                         Console.WriteLine("".PadLeft(30,'-'));
                     }
