@@ -30,8 +30,7 @@ namespace LoginAsp
 
                 if(pass == cnfpass)
                 {
-                    Response.ContentType = "text";
-                    string query = $"Insert into Users(FirtName,LastName,Email,Mobile) values('{FirstName}','{LastName}','{Email}','{Mobile}')";
+                    string query = $"Insert into Users(First_Name,Last_Name,Email,Mobile) values('{FirstName}','{LastName}','{Email}','{Mobile}')";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     int count = cmd.ExecuteNonQuery();
                     if(count > 0)
@@ -43,7 +42,6 @@ namespace LoginAsp
                         string passquery = $"Insert into User_Password values('{pass}','{id}')";
                         SqlCommand passcmd = new SqlCommand(passquery, conn);
                         passcmd.ExecuteNonQuery();
-                        Response.Output.WriteLine("Hi");
 
                     }
                 }
