@@ -30,7 +30,7 @@ namespace DataAccessLayer
             }
             catch (Exception e)
             {
-
+                Console.WriteLine(e.Message);
             }
             finally
             {
@@ -74,7 +74,7 @@ namespace DataAccessLayer
             }
             catch (Exception e)
             {
-
+                Console.WriteLine(e.Message);
             }
             finally
             {
