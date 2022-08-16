@@ -54,8 +54,6 @@
                         <asp:TextBox runat="server" class="form-control" type="password" id="cnf_password" placeholder="Confirm Password" required />
                     </div>
                 </div>
-
-
                 <div class="mx-auto d-grid col-3">
                     <asp:Button runat="server" id="Signup" Class="btn btn-primary btn-md mb-2" type="submit" Text="Sign Up" OnClick="Signup_Click"></asp:Button>
                 </div>

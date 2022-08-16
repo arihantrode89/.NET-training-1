@@ -4,21 +4,29 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-
-namespace LoginAsp
+using System.Configuration;
+namespace Asp.NET
 {
     public partial class Login : System.Web.UI.Page
     {
-        SqlConnection conn = new SqlConnection("Data Source = BLR1-LHP-N80812;Initial Catalog=ForumSite;Integrated Security=true");
-
         protected void Page_Load(object sender, EventArgs e)
         {
+            label1.Visible = false;
         }
+
+        public dynamic Connection()
+        {
+            string str = ConfigurationManager.ConnectionStrings["login"].ToString();
+            SqlConnection conn = new SqlConnection(str);
+            conn.Open();
+            return conn;
+
+        }
+
         protected void Loginbtn_click(object sender, EventArgs e)
         {
-            conn.Open();
+            var conn = Connection();
             try
             {
                 string username = emailid.Text;
@@ -27,7 +35,7 @@ namespace LoginAsp
                 SqlCommand cmd = new SqlCommand(query, conn);
                 int? Id;
                 Id = (int)cmd.ExecuteScalar();
-                if (Id!=null)
+                if (Id != null)
                 {
                     string querypass = $"Select Password from User_Password where User_id={Id}";
                     SqlCommand cmdpass = new SqlCommand(querypass, conn);
@@ -35,20 +43,20 @@ namespace LoginAsp
                     pwd = (string)cmdpass.ExecuteScalar();
                     if (pwd != null)
                     {
-                        if(pwd == pass)
+                        if (pwd == pass)
                         {
                             Response.Output.Write($"Welcome to Forum Site");
                             emailid.Text = "";
                             password.Text = "";
-                            
+
                         }
                         else
                         {
-                            
+
                             Response.Output.Write($"Invalid Credentials");
                             emailid.Text = "";
                             password.Text = "";
-                            
+
                         }
                     }
 
@@ -58,6 +66,13 @@ namespace LoginAsp
             catch
             {
 
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
             }
         }
     }

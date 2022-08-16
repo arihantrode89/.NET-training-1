@@ -29,7 +29,7 @@ namespace StudentUsingDatabase
                 data.Add("Obtained_Marks", Convert.ToString(ObtainedMarks));
                 data.Add("Total_Marks", Convert.ToString(Totalmarks));
                 obj.Add(data);
-                Added = true;
+                //Added = true;
 
 
             }
@@ -149,22 +149,36 @@ namespace StudentUsingDatabase
             conn.Open();
             try
             {
-                string str = $"Delete from StudentDetails where Id = {id}";
-                SqlCommand query = new SqlCommand
-                    (str, conn);
-
-                query.ExecuteNonQuery();
-
-                foreach(var item in obj)
+                
+                if (Added == true)
                 {
-                    if (item["Id"] == Convert.ToString(id))
+                    string str = $"Delete from StudentDetails where Id = {id}";
+                    SqlCommand query = new SqlCommand
+                        (str, conn);
+
+                    query.ExecuteNonQuery();
+
+                    foreach (var item in obj)
                     {
-                        obj.Remove(item);
-                        return true;
+                        if (item["Id"] == Convert.ToString(id))
+                        {
+                            obj.Remove(item);
+                            return true;
+                        }
                     }
+
+                    return false;
+                }
+                else
+                {
+                    string str = $"Delete from StudentDetails where Id = {id}";
+                    SqlCommand query = new SqlCommand
+                        (str, conn);
+
+                    query.ExecuteNonQuery();
+                    return true;
                 }
 
-                return false;
 
             }
             catch (Exception e)
@@ -206,6 +220,7 @@ namespace StudentUsingDatabase
                             obj.Add(data);
                             data = new Dictionary<string, string>();
                         }
+                        Added=true;
                     }
                     else
                     {
@@ -260,43 +275,49 @@ namespace StudentUsingDatabase
             SqlDataReader reader = null;
             try
             {
-                //string str = $"Select * from StudentDetails where Id = {id}";
-                //SqlCommand query = new SqlCommand
-                //    (str, conn);
-
-                //reader = query.ExecuteReader();
-                //if (reader.HasRows)
-                //{
-
-                //    while (reader.Read())
-                //    {
-                //        for (int i = 0; i < reader.FieldCount; i++)
-                //        {
-                //            Console.WriteLine($"{reader.GetName(i)}: {reader[i]}");
-                //        }
-                //        Console.WriteLine("".PadLeft(30, '-'));
-                //    }
-                    
-                //    return true;
-                //}
-                //else
-                //{
-                //    throw new ExceptionStudent();
-                //}
-                foreach(var item in obj)
+                if (Added == false)
                 {
-                    if (item["Id"] == Convert.ToString(id))
+                    string str = $"Select * from StudentDetails where Id = {id}";
+                    SqlCommand query = new SqlCommand
+                        (str, conn);
+
+                    reader = query.ExecuteReader();
+                    if (reader.HasRows)
                     {
-                        foreach (KeyValuePair<string, string> dt in item)
+
+                        while (reader.Read())
                         {
-                            Console.WriteLine($"{dt.Key}: {dt.Value}");
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                Console.WriteLine($"{reader.GetName(i)}: {reader[i]}");
+                            }
+                            Console.WriteLine("".PadLeft(30, '-'));
                         }
+
                         return true;
                     }
-                    
+                    else
+                    {
+                        throw new ExceptionStudent();
+                    }
                 }
+                else
+                {
+                    foreach (var item in obj)
+                    {
+                        if (item["Id"] == Convert.ToString(id))
+                        {
+                            foreach (KeyValuePair<string, string> dt in item)
+                            {
+                                Console.WriteLine($"{dt.Key}: {dt.Value}");
+                            }
+                            return true;
+                        }
 
-                throw new ExceptionStudent();
+                    }
+
+                    throw new ExceptionStudent();
+                }
 
             }
             catch (ExceptionStudent e)
