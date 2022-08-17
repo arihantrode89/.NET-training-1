@@ -63,9 +63,9 @@ namespace Asp.NET
                 }
 
             }
-            catch
+            catch(Exception ex)
             {
-
+                Response.Output.Write(ex.Message);
             }
             finally
             {

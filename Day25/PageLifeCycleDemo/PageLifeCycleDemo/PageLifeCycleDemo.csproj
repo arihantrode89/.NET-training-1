@@ -7,16 +7,16 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9F065785-5B83-49C6-8189-322E669AB25B}</ProjectGuid>
+    <ProjectGuid>{5D178648-884A-48D8-9ECD-3EC6AC0C8646}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Asp.NET</RootNamespace>
-    <AssemblyName>Asp.NET</AssemblyName>
+    <RootNamespace>PageLifeCycleDemo</RootNamespace>
+    <AssemblyName>PageLifeCycleDemo</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44350</IISExpressSSLPort>
+    <IISExpressSSLPort>44364</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -67,24 +67,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Home.aspx" />
-    <Content Include="Login.aspx" />
+    <Content Include="PageEventWithForm.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Home.aspx.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
+    <Compile Include="PageEventWithForm.aspx.cs">
+      <DependentUpon>PageEventWithForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
+    <Compile Include="PageEventWithForm.aspx.designer.cs">
+      <DependentUpon>PageEventWithForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -110,9 +102,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>54705</DevelopmentServerPort>
+          <DevelopmentServerPort>63660</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44350/</IISUrl>
+          <IISUrl>https://localhost:44364/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
