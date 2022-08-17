@@ -40,6 +40,7 @@ namespace LoginAsp
                             Response.Output.Write($"Welcome to Forum Site");
                             emailid.Text = "";
                             password.Text = "";
+                            Server.Transfer("Home.aspx");
                             
                         }
                         else

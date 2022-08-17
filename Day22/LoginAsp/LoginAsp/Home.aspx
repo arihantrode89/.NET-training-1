@@ -16,9 +16,6 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-          <div class="container-fluid">
-              <a class="navbar-brand" href="#"><img class="img-fluid" src="/static/images/logo.png" style="width:100px;height:30px"/></a>
-          </div>
             <ul class="navbar-nav">
                 <li class="nav-item mx-2">
                     <a class="nav-link active" href="#">Home</a>
@@ -29,8 +26,17 @@
                 <li class="nav-item mx-2">
                     <a class="nav-link active" href="Register.aspx">Register</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" runat="server" data-bs-toggle="dropdown">Dropdown</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Technology</a></li>
+                        <li><a class="dropdown-item" href="#">Business</a></li>
+                        <li><a class="dropdown-item" href="#">Stock</a></li>
+                    </ul>
+                </li>
             </ul>
      </nav>
+
     
     <div>
         <asp:Label ID="Label1" runat="server" Text=""></asp:Label>

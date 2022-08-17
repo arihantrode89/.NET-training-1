@@ -28,7 +28,7 @@ namespace Page_Track_Demo
         protected void ClearListBox(object sender,EventArgs e)
         {
             ListBox1.Items.Clear();
-            Response.WriteFile("login.aspx");
+            Text1.
         }
         public void Log(string str)
         {
