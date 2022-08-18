@@ -16,13 +16,41 @@ namespace DataAccessLayer
         public void InsertIntoCategoryTable(Category ctg)
         {
             conn.Open();
+            SqlDataReader reader = null;
             try
             {
-                category.Add(ctg);
-                string query = $"Insert into Category values({ctg.CategoryId},'{ctg.CategoryName}')";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.ExecuteNonQuery();
+                List<int> ids = new List<int>();
+                string idquery = $"Select CategoryId from Category";
+                SqlCommand cmdid = new SqlCommand(idquery, conn);
+                reader = cmdid.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        for (int i = 0; i < reader.FieldCount; i++) 
+                        {
+                            ids.Add((int)reader.GetValue(i));
+                                
+                        }
+                    }
+                }
+                if (ids.Contains(ctg.CategoryId))
+                {
+                    throw new CategoryDepartmentException();
+                }
+                else
+                {
+                    category.Add(ctg);
+                    string query = $"Insert into Category values({ctg.CategoryId},'{ctg.CategoryName}')";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                }
 
+
+            }
+            catch(CategoryDepartmentException e)
+            {
+                e.PrimaryKeyException();
             }
             catch(SqlException sql)
             {
@@ -43,30 +71,62 @@ namespace DataAccessLayer
 
         public void InsertIntoProductTable(Product ptd,string CategoryName)
         {
+            bool pkey=false;
             conn.Open();
+            SqlDataReader reader = null;
             try
             {
-                string ctgquery = $"Select CategoryId from Category where CategoryName='{CategoryName}'";
-                SqlCommand ctgcmd = new SqlCommand(ctgquery, conn);
-                int? CategoryId=null;
-                CategoryId = (int)ctgcmd.ExecuteScalar();
-                if (CategoryId != null)
+                List<int> ids = new List<int>();
+                string idquery = $"Select CategoryId from Category";
+                SqlCommand cmdid = new SqlCommand(idquery, conn);
+                reader = cmdid.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    ptd.CategoryId = (int)CategoryId;
-                    product.Add(ptd);
-                    string query = $"Insert into Product values({ptd.ProductID},'{ptd.ProductName}','{ptd.Price}',{CategoryId})";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.ExecuteNonQuery();
+                    while (reader.Read())
+                    {
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            ids.Add((int)reader.GetValue(i));
+
+                        }
+                    }
+                }
+                if (ids.Contains(ptd.ProductID))
+                {
+                    pkey = true;
+                    throw new CategoryDepartmentException();
                 }
                 else
                 {
-                    throw new CategoryDepartmentException();
+                    string ctgquery = $"Select CategoryId from Category where CategoryName='{CategoryName}'";
+                    SqlCommand ctgcmd = new SqlCommand(ctgquery, conn);
+                    int? CategoryId = null;
+                    CategoryId = (int)ctgcmd.ExecuteScalar();
+                    if (CategoryId != null)
+                    {
+                        ptd.CategoryId = (int)CategoryId;
+                        product.Add(ptd);
+                        string query = $"Insert into Product values({ptd.ProductID},'{ptd.ProductName}','{ptd.Price}',{CategoryId})";
+                        SqlCommand cmd = new SqlCommand(query, conn);
+                        cmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        throw new CategoryDepartmentException();
+                    }
                 }
 
             }
             catch(CategoryDepartmentException e)
             {
-                e.InvalidCategory(CategoryName);
+                if (pkey == true)
+                {
+                    e.PrimaryKeyException();
+                }
+                else
+                {
+                    e.InvalidCategory(CategoryName);
+                }
             }
             catch (SqlException sql)
             {

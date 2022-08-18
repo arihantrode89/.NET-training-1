@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectDataSource_ControlsDemo", "ObjectDataSource_ControlsDemo\ObjectDataSource_ControlsDemo.csproj", "{BC5BF43E-1BA3-4963-B860-4E67AC96BDAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC5BF43E-1BA3-4963-B860-4E67AC96BDAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC5BF43E-1BA3-4963-B860-4E67AC96BDAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC5BF43E-1BA3-4963-B860-4E67AC96BDAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC5BF43E-1BA3-4963-B860-4E67AC96BDAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B74E418-4165-4E3E-84FC-83FA37C9D540}
+	EndGlobalSection
+EndGlobal

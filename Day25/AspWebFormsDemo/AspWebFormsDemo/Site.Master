@@ -17,7 +17,7 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         
 </head>
-<body>
+<body style="overflow:scroll;">
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -58,7 +58,7 @@
                 </li>
             </ul>
      </nav>
-        <div class="container body-content fixed-bottom">
+        <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />

@@ -14,14 +14,14 @@ namespace AspWebFormsDemo
 
         }
 
-        protected void OnCalendarChange(object sender,EventArgs e)
-        {
-            ListBox1.Items.Add(Calendar1.SelectedDate.ToString());
-        }
+        //protected void OnCalendarChange(object sender,EventArgs e)
+        //{
+        //    ListBox1.Items.Add(Calendar1.SelectedDate.ToString());
+        //}
 
-        protected void ClearList(object sender,EventArgs e)
-        {
-            ListBox1.Items.Clear();
-        }
+        //protected void ClearList(object sender,EventArgs e)
+        //{
+        //    ListBox1.Items.Clear();
+        //}
     }
 }

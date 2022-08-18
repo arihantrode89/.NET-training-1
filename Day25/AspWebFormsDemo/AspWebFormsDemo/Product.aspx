@@ -3,22 +3,31 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+   
+    <%--me-auto mb-2 mb-lg-0--%>
+
     <h1>Product Page</h1>
     <nav class="navbar navbar-expand-sm bg-dark fixed-top ">
           <div class="container-fluid">
-              <a runat="server" class="navbar-brand" href="#">Forum</a>
-            <ul class="navbar">
-                <li class="nav-item mx-2">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown link</a>
+              <a runat="server" class="navbar-brand text-white" href="#">Forum</a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown mx-2">
+                    <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Product Categories</a>
                     <ul class="dropdown-menu" runat="server">
-                        <li><a runat="server" class="dropdown-item" href="#">Action</a></li>
-                        <li><a runat="server" class="dropdown-item" href="#">Another action</a></li>
-                        <li><a runat="server" class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a runat="server" class="dropdown-item" href="~/Food">Food</a></li>
+                        <li><a runat="server" class="dropdown-item" href="~/Business">Business</a></li>
+                        <li><a runat="server" class="dropdown-item" href="~/Artificial_Inteligence">Artificial Inteligence</a></li>
                     </ul>
                 </li>
             </ul>
           </div>
      </nav>
+
+
+
+    
+
+
     
     <%--<asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="Black" DayNameFormat="Shortest" Font-Names="Times New Roman" Font-Size="10pt" ForeColor="Black" Height="220px" NextPrevFormat="FullMonth" TitleFormat="Month" Width="400px" OnSelectionChanged="OnCalendarChange">
         <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" ForeColor="#333333" Height="10pt" />

@@ -22,5 +22,10 @@ namespace DataAccessLayer
         {
             Console.WriteLine($"{ctg} Category doesnot exist Exist");
         }
+
+        public void PrimaryKeyException()
+        {
+            Console.WriteLine("You cannot use this id as it is already present in database");
+        }
     }
 }
