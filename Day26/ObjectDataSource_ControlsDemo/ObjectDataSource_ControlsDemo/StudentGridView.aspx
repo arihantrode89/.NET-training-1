@@ -49,14 +49,16 @@
 
 
                 <div class="container" runat="server">
-                <asp:GridView ID="gridview1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnRowDeleted="gridview1_RowDeleted">
+                <asp:GridView ID="gridview1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnRowDeleted="gridview1_RowDeleted" AutoGenerateEditButton="True">
                     <Columns>
+                        <asp:ButtonField ButtonType="Button" CommandName="Select" HeaderText="Select" ShowHeader="True" Text="Select" />
                         <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
                         <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                         <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                         <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
                         <asp:BoundField DataField="Department" HeaderText="Department" SortExpression="Department" />
                         <asp:ButtonField ButtonType="Button" CommandName="Delete" HeaderText="Delete" ShowHeader="True" Text="Delete" />
+                        <asp:ButtonField ButtonType="Button" CommandName="Edit" HeaderText="Edit" ShowHeader="True" Text="Edit" />
                     </Columns>
                     <FooterStyle BackColor="#CCCCCC" />
                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -68,14 +70,20 @@
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#383838" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:trainingConnectionString %>" SelectCommand="SELECT * FROM [StudentGridView]" DeleteCommand="Delete from StudentGridView where Id=@Id"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:trainingConnectionString %>" SelectCommand="SELECT * FROM [StudentGridView]" DeleteCommand="Delete from StudentGridView where Id=@Id" UpdateCommand="Update StudentGridView Set Name=@Name,Email=@Email,Phone=@Phone,Department=@Department where Id=@Id"></asp:SqlDataSource>
                 </div>
 
                 <br/>
                     <asp:Label ID="del_label" runat="server" Text=""></asp:Label>
                 <br/>
+                <div class="row">
                 <div class="mx-auto d-grid col-3">
                     <asp:Button ID="delete" runat="server" Text="Delete" OnClick="DeleteStudent" />
+                </div>
+
+                <div class="mx-auto d-grid col-3">
+                    <asp:Button ID="update" runat="server" Text="Update"/>
+                </div>
                 </div>
                   
            </form>

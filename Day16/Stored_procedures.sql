@@ -36,7 +36,7 @@ end
 
 Declare @emptotal int
 Exec GetEmpCountByGender 'M' ,@emptotal output
-print @emptotalS
+print @emptotal
 
 
 Create Proc GetName
