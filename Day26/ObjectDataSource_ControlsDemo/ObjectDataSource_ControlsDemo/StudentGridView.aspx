@@ -17,7 +17,7 @@
    <section class="py-3 px-3">
          <div class="container-md py-3" style="width:500px;">
             <form id="form1" runat="server">
-        
+                
                 <div class="row mb-2 py-2 px-2">
                     <div class="col py-2">
                         <asp:TextBox ID="Name" runat="server" placeholder="Enter Student Name" Width="430px"></asp:TextBox>
@@ -39,20 +39,24 @@
                         <asp:TextBox ID="dept" runat="server" placeholder="Enter Student Department" Width="430px"></asp:TextBox>
                     </div>
                 </div>
-
                 <div class="mx-auto d-grid col-3">
-                    <asp:Button ID="Add" runat="server" Text="Add" OnClick="AddStudent"/>
+                    <asp:Button ID="Add" runat="server" Text="Add" OnClick="AddStudent" />
                 </div>
 
+
                 <br/><hr/>
+
+
+
                 <div class="container" runat="server">
-                <asp:GridView runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+                <asp:GridView ID="gridview1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnRowDeleted="gridview1_RowDeleted">
                     <Columns>
                         <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
                         <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                         <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                         <asp:BoundField DataField="Phone" HeaderText="Phone" SortExpression="Phone" />
                         <asp:BoundField DataField="Department" HeaderText="Department" SortExpression="Department" />
+                        <asp:ButtonField ButtonType="Button" CommandName="Delete" HeaderText="Delete" ShowHeader="True" Text="Delete" />
                     </Columns>
                     <FooterStyle BackColor="#CCCCCC" />
                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -64,7 +68,14 @@
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#383838" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:trainingConnectionString %>" SelectCommand="SELECT * FROM [StudentGridView]"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:trainingConnectionString %>" SelectCommand="SELECT * FROM [StudentGridView]" DeleteCommand="Delete from StudentGridView where Id=@Id"></asp:SqlDataSource>
+                </div>
+
+                <br/>
+                    <asp:Label ID="del_label" runat="server" Text=""></asp:Label>
+                <br/>
+                <div class="mx-auto d-grid col-3">
+                    <asp:Button ID="delete" runat="server" Text="Delete" OnClick="DeleteStudent" />
                 </div>
                   
            </form>

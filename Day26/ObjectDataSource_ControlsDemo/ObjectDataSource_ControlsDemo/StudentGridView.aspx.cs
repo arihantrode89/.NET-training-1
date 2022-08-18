@@ -13,7 +13,7 @@ namespace ObjectDataSource_ControlsDemo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            del_label.Visible = false;
         }
 
         protected void AddStudent(object sender,EventArgs e)
@@ -47,6 +47,54 @@ namespace ObjectDataSource_ControlsDemo
                 conn.Close();
             }
 
+        }
+
+        protected void DeleteStudent(object sender,EventArgs e)
+        {
+            if (gridview1.SelectedRow != null)
+            {
+                
+                string str = ConfigurationManager.ConnectionStrings["trainingConnectionString"].ToString();
+                SqlConnection conn = new SqlConnection(str);
+                conn.Open();
+                try
+                {
+
+                    string query = $"Delete from StudentGridView where Id={(int)gridview1.SelectedValue}";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                    Response.Redirect("StudentGridView.aspx");
+
+
+                }
+                catch (SqlException sql)
+                {
+                    Response.Write(sql.Message);
+                }
+                catch (Exception ex)
+                {
+                    Response.Write(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            else
+            {
+                
+                del_label.Visible = true;
+                del_label.Text = "Please Select the row from grid view";
+            }
+        }
+
+        protected void gridview1_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+            if (e.Exception == null)
+            {
+                del_label.Visible = true;
+                del_label.Text = "Deleted Successfully";
+            }
         }
     }
 }

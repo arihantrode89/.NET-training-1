@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<Employees>
+	<Employee Id="1" City="Seattle">
+		<EmployeeName>Nancy Davolio</EmployeeName>
+		<Country>USA</Country>
+	</Employee>
+	<Employee Id="2" City="Tacoma">
+		<EmployeeName>Andrew Fuller</EmployeeName>
+		<Country>USA</Country>
+	</Employee>
+	<Employee Id="3" City="Kirkland">
+		<EmployeeName>Janet Leverling</EmployeeName>
+		<Country>USA</Country>
+	</Employee>
+	<Employee Id="4" City="Redmond">
+		<EmployeeName>Margaret Peacock</EmployeeName>
+		<Country>USA</Country>
+	</Employee>
+	<Employee Id="5" City="London">
+		<EmployeeName>Steven Buchanan</EmployeeName>
+		<Country>UK</Country>
+	</Employee>
+	<Employee Id="6" City="London">
+		<EmployeeName>Michael Suyama</EmployeeName>
+		<Country>UK</Country>
+	</Employee>
+	<Employee Id="7" City="London">
+		<EmployeeName>Robert King</EmployeeName>
+		<Country>UK</Country>
+	</Employee>
+	<Employee Id="8" City="Seattle">
+		<EmployeeName>Laura Callahan</EmployeeName>
+		<Country>USA</Country>
+	</Employee>
+	<Employee Id="9" City="London">
+		<EmployeeName>Anne Dodsworth</EmployeeName>
+		<Country>UK</Country>
+	</Employee>
+</Employees>

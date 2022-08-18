@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="training" Class="SampleDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=training;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="trainingConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Employee" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NChar(25) NOT NULL" CanBeNull="false" />
+      <Column Name="Role" Type="System.String" DbType="NChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="Dob" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Gender" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Band" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Grade" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Salary" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DOJ" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="dept_no" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
