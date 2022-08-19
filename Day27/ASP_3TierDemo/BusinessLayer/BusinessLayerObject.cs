@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Entity;
 using DataAccessLayer;
+using System.Data;
 
 namespace BusinessLayer
 {
@@ -16,12 +17,25 @@ namespace BusinessLayer
             try
             {
                 //_dataAccessObject.InsertDataQuery(std);
-                _dataAccessObject.InsertDataProcedure(std);
+                //_dataAccessObject.InsertDataProcedure(std);
+                _dataAccessObject.InsertusingDatatableWizard(std);
             }
             catch
             {
                 throw;
             }
         }
+
+        public object Getdata()
+        {
+            return _dataAccessObject.SelectData();
+        }
+
+        //public void Update(Student std,int rowindex)
+        //{
+        //    DataTable dt = (DataTable)Getdata();
+        //    DataRow dr = dt.Rows[rowindex];
+        //    dr["First_Name"]
+        //}
     }
 }

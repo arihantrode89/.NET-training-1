@@ -15,6 +15,7 @@ namespace ObjectDataSource_ControlsDemo
         protected void Page_Load(object sender, EventArgs e)
         {
             del_label.Visible = false;
+            SqlDataSource1.UpdateCommand = " ";
         }
 
         protected void AddStudent(object sender,EventArgs e)
@@ -100,21 +101,26 @@ namespace ObjectDataSource_ControlsDemo
 
         protected void gridview1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            SqlDataSource1.UpdateCommand = "";
             string str = ConfigurationManager.ConnectionStrings["trainingConnectionString"].ToString();
             SqlConnection conn = new SqlConnection(str);
+            conn.Open();
+            //SqlDataAdapter da = new SqlDataAdapter("Select * from StudentGridView", conn);
+            //DataSet ds = new DataSet();
+            //da.Fill(ds);
 
-            SqlDataAdapter da = new SqlDataAdapter("Select * from StudentGridView",conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            //DataRow dr = ds.Tables[0].Rows[e.RowIndex];
+            //dr["Name"] = e.NewValues["Name"];
+            //dr["Email"] = e.NewValues["Email"];
+            //dr["Phone"] = e.NewValues["Phone"];
+            //dr["Department"] = e.NewValues["Department"];
 
-            DataRow dr = dt.Rows[e.RowIndex];
-            dr["Name"] = e.NewValues["Name"];
-            dr["Email"] = e.NewValues["Email"];
-            dr["Phone"] = e.NewValues["Phone"];
-            dr["Department"] = e.NewValues["Department"];
+            //dr.AcceptChanges();
+            //ds.AcceptChanges();
 
-            dt.AcceptChanges();
+            string query = $"Update StudentGridView Set Name='{e.NewValues["Name"]}',Email='{e.NewValues["Email"]}',Phone='{e.NewValues["Phone"]}',Department='{e.NewValues["Department"]}' where Id={e.Keys[0]}";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.ExecuteNonQuery();
+            
 
         }
     }

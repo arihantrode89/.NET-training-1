@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLayer;
 using Entity;
+using System.Data;
 
 namespace ASP_3TierDemo
 {
@@ -13,7 +14,6 @@ namespace ASP_3TierDemo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void SignupUser(object sender,EventArgs e)
@@ -29,7 +29,10 @@ namespace ASP_3TierDemo
                 std.Password = password.Text;
 
                 obj.Insert(std);
+                GridView1.DataSource = obj.Getdata();
+                GridView1.DataBind();
 
+                var aa = (DataTable)obj.Getdata();
 
             }
             catch(Exception ex)
