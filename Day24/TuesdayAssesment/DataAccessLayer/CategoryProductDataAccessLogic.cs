@@ -13,6 +13,8 @@ namespace DataAccessLayer
         SqlConnection conn = new SqlConnection("Data Source=BLR1-LHP-N80812;Initial Catalog=training;Integrated Security=true;");
         List<Product> product = new List<Product>();
         List<Category> category = new List<Category>();
+        Boolean AddedCtg = false;
+        Boolean AddedPtd = false;
         public void InsertIntoCategoryTable(Category ctg)
         {
             conn.Open();
@@ -151,24 +153,38 @@ namespace DataAccessLayer
             SqlDataReader reader = null;
             try
             {
-                string query = $"Select * from Category";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                reader = cmd.ExecuteReader();
-                if (reader.HasRows)
+                if (AddedCtg == false)
                 {
-                    while (reader.Read())
+                    string query = $"Select * from Category";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
                     {
-                        for(int i = 0; i < reader.FieldCount; i++)
+                        while (reader.Read())
                         {
-                            Console.WriteLine($"{reader.GetName(i)}: {reader[i]}");
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                Console.WriteLine($"{reader.GetName(i)}: {reader[i]}");
+                            }
                         }
-                    }
-                    Console.WriteLine("".PadLeft(30, '-'));
+                        Console.WriteLine("".PadLeft(30, '-'));
 
+                    }
+                    else
+                    {
+                        throw new CategoryDepartmentException();
+                    }
                 }
                 else
                 {
-                    throw new CategoryDepartmentException();
+                    if (category.Count > 0)
+                    {
+                        foreach(Category c in category)
+                        {
+                            Console.WriteLine($"Category ID: {c.CategoryId}\nCategory Name: {c.CategoryName}");
+                        }
+                        Console.WriteLine("".PadLeft(30, '-'));
+                    }
                 }
 
             }

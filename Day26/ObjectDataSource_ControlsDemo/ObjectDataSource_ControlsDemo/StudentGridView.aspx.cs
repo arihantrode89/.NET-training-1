@@ -98,6 +98,24 @@ namespace ObjectDataSource_ControlsDemo
             }
         }
 
-        
+        protected void gridview1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            SqlDataSource1.UpdateCommand = "";
+            string str = ConfigurationManager.ConnectionStrings["trainingConnectionString"].ToString();
+            SqlConnection conn = new SqlConnection(str);
+
+            SqlDataAdapter da = new SqlDataAdapter("Select * from StudentGridView",conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+            DataRow dr = dt.Rows[e.RowIndex];
+            dr["Name"] = e.NewValues["Name"];
+            dr["Email"] = e.NewValues["Email"];
+            dr["Phone"] = e.NewValues["Phone"];
+            dr["Department"] = e.NewValues["Department"];
+
+            dt.AcceptChanges();
+
+        }
     }
 }

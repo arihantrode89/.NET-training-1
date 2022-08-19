@@ -49,7 +49,7 @@
 
 
                 <div class="container" runat="server">
-                <asp:GridView ID="gridview1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnRowDeleted="gridview1_RowDeleted" AutoGenerateEditButton="True">
+                <asp:GridView ID="gridview1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black" OnRowDeleted="gridview1_RowDeleted" AutoGenerateEditButton="True" OnRowUpdating="gridview1_RowUpdating">
                     <Columns>
                         <asp:ButtonField ButtonType="Button" CommandName="Select" HeaderText="Select" ShowHeader="True" Text="Select" />
                         <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
@@ -70,7 +70,7 @@
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#383838" />
                 </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:trainingConnectionString %>" SelectCommand="SELECT * FROM [StudentGridView]" DeleteCommand="Delete from StudentGridView where Id=@Id" UpdateCommand="Update StudentGridView Set Name=@Name,Email=@Email,Phone=@Phone,Department=@Department where Id=@Id"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:trainingConnectionString %>" SelectCommand="SELECT * FROM [StudentGridView]" DeleteCommand="Delete from StudentGridView where Id=@Id" ></asp:SqlDataSource>
                 </div>
 
                 <br/>
