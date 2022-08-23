@@ -22,7 +22,7 @@ namespace EntityFrameworkPractice
                 }
             };
 
-            obj.AddCourses(courses);
+            //obj.AddCourses(courses);
 
             var data = obj.GetCourses().FirstOrDefault();
 

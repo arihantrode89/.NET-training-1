@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Sample";
+}
+
+<body>
+<h6 class="text-black text-center">Employees</h6>
+
+@{ 
+    var Employee = (List<MVC_ModelDemo.Models.Employee>)ViewData["model"];
+}
+
+@foreach(var emp in Employee)
+            {
+                <ul>
+                    <li>ID:@emp.Id</li>
+                    <li>Name:@emp.Name</li>
+                    <li>Address:@emp.Address</li>
+                    <li>Email:@emp.Email</li>
+                    <li>City:@emp.City</li>
+
+                </ul>
+            }
+
+</body>

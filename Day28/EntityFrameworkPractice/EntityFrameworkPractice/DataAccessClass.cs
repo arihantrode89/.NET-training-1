@@ -30,5 +30,7 @@ namespace EntityFrameworkPractice
             obj.Courses.Add(c);
             obj.SaveChanges();
         }
+
+
     }
 }
