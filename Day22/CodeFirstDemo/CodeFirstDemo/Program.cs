@@ -34,7 +34,7 @@ namespace CodeFirstDemo
                 }
             };
 
-            dataAccessHelper.AddDepartment(dept);
+            //dataAccessHelper.AddDepartment(dept);
 
             var deptdata = dataAccessHelper.FetchDepartment().First();
             if (deptdata != null)
