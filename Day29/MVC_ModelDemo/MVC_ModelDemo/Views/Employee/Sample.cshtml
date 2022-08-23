@@ -7,11 +7,13 @@
 <h6 class="text-black text-center">Employees</h6>
 
 @{ 
-    var Employee = (List<MVC_ModelDemo.Models.Employee>)ViewData["model"];
+    //var Employee = (List<MVC_ModelDemo.Models.Employee>)ViewData["model"];
+    var Employee = (List<MVC_ModelDemo.Models.Employee>)ViewBag.model;
+
 }
 
-@foreach(var emp in Employee)
-            {
+@foreach (var emp in Employee)
+{
                 <ul>
                     <li>ID:@emp.Id</li>
                     <li>Name:@emp.Name</li>
@@ -21,5 +23,7 @@
 
                 </ul>
             }
+
+    @Html.
 
 </body>

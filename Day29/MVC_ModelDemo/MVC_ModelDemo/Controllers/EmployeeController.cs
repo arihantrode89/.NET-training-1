@@ -19,16 +19,26 @@ namespace MVC_ModelDemo.Controllers
 
         public ActionResult Create()
         {
-            var data = Request.Form;
-            obj.CreateEmploye(2, data["Name"], data["Address"], data["City"], data["Email"]);
+            //var data = Request.Form;
+            //obj.CreateEmploye(2, Name,Address, City, Email);
             Employee employee = new Employee();
             return View(employee);
         }
 
+        [HttpPost]
+        public ActionResult Create(string Name, string Address, string City, string Email)
+        {
+
+            List<Employee> data = obj.GetEmployeeDetails(1);
+            obj.CreateEmploye(2, Name, Address, City, Email);
+            return View("Index",data);
+            
+        }
         public ActionResult Sample(int id)
         {
             var data = obj.GetEmployeeDetails(id);
-            ViewData["model"] = data;
+            //ViewData["model"] = data;
+            ViewBag.model = data;
             return View();
         }
     }
