@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ModelStateDemo.Models.tblEmployee>
+
+@{
+    ViewBag.Title = "GetEmployee";
+    Layout = null;
+}
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+<h2>GetEmployee</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name,"Details",new { id = item.ID },new { @class="text-black"})
+            </td>
+        </tr>
+    }
+
+</table>
