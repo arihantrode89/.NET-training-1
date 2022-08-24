@@ -9,7 +9,7 @@
         @using (Html.BeginForm("CreateEmployee", "Employee", FormMethod.Post))
         {
             <div class="row px-2 py-2">
-                @Html.TextBox("EmployeeName", "", new { @class = "form-control", @placeholder = "Enter Name" })
+                @Html.TextBox("EmployeeName", "", new { @class = "form-control mt-2", @placeholder = "Enter Name" })
             </div>
             <div class="row px-2 py-2">
                 @Html.TextBox("Email", "", new { @class = "form-control", @placeholder = "Enter Email", @type = "Email" })
@@ -46,7 +46,7 @@
                 @Html.DropDownList("Department", new SelectList(dept, dept.First()), new { @class = "form-control" })
             </div>
             <div class="mx-auto d-grid col-3">
-                <button  class="btn btn-primary" id="Submit">Submit</button>
+                <button  class="btn btn-primary mb-2" id="Submit">Submit</button>
             </div>
         }
     </div>

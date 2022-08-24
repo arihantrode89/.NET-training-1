@@ -1,0 +1,27 @@
+﻿@model PartialViewDemo.Models.Product
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayFor(model => model.ProductName)</td>
+        <td>@Html.DisplayFor(model => model.ProductDescription)</td>
+        <td>@Html.DisplayFor(model => model.ProductCategory)</td>
+        <td>@Html.DisplayFor(model => model.Price)</td>
+
+    </tr>
+</table>
