@@ -1,0 +1,38 @@
+﻿@model List<MVC_Entity_Practice.Models.Employee>
+
+@{
+    ViewBag.Title = "GetEmployee";
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+}
+
+
+<div class="row px-2 py-2">
+    @foreach (var item in Model)
+    {
+        <div class="col py-2">
+
+            <div class="card bg-light">
+                
+                <div class="card-header">
+                    Employee
+                </div>
+                <div class="card-body">
+                <pre>
+                Name:@item.Name
+                Email:@item.Email
+                Phone:@item.Phone
+                Position:@item.Position
+                DepartmentId:@item.Departments.Name
+                </pre>
+                @*@Html.ActionLink(" ", "EditEmployee", new {id=item.Id }, new { @class = "stretched-link" })*@
+                </div>
+                <div class="card-footer text-center">
+                    @Html.ActionLink("Edit", "EditEmployee", new { id = item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("View", "GetEmpDetails", new { id=item.Id }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
