@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MVC_StoredProcedure.Models.Department>
+@{
+    ViewBag.Title = "GetDepartment";
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+}
+
+<div class="row px-2 py-2">
+    @foreach (var item in Model)
+    {
+        <div class="col py-2">
+
+            <div class="card bg-light" style="width:500px;">
+
+                <div class="card-header">
+                    Employee
+                </div>
+                <div class="card-body">
+                    <pre>
+                Department ID: @item.Id
+                Department Name: @item.Name
+                Department Location: @item.Location
+                </pre>
+                    @*@Html.ActionLink(" ", "EditEmployee", new {id=item.Id }, new { @class = "stretched-link" })*@
+                </div>
+                <div class="card-footer text-center">
+                    @Html.ActionLink("Edit", "EditDepartment", new { id = item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "DeleteDepartment", new { id = item.Id }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

@@ -1,0 +1,27 @@
+﻿@model MVC_StoredProcedure.Models.Employee
+@{
+    ViewBag.Title = "GetEmpDetails";
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+
+}
+
+<div class="container mt-2">
+    <div class="card">
+
+        <div class="card-header">
+            Employee
+        </div>
+        <div class="card-body">
+            <pre>
+            Name:@Model.Name
+            Email:@Model.Email
+            Phone:@Model.Phone
+            Position:@Model.Position
+            DepartmentId:@Model.Departments.Name
+            </pre>
+            @*@Html.ActionLink(" ", "EditEmployee", new {  }, new { @class = "stretched-link" })*@
+        </div>
+    </div>
+</div>
+
+

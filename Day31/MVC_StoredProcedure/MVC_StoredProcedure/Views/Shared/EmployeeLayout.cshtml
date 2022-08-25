@@ -1,0 +1,33 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ProductLayout</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+        @Html.ActionLink("Employee", "GetEmployee", "Employee", new { area = "" }, new { @class = "navbar-brand" })
+        <ul class="navbar-nav">
+            <li class="nav-item">@Html.ActionLink("Home", "GetEmployee", "Employee", new { @class = "nav-link text-black" })</li>
+            <li class="nav-item">@Html.ActionLink("About", "About", "Employee", new { @class = "nav-link text-black" })</li>
+            <li class="nav-item">@Html.ActionLink("Departments", "GetDepartment", "Employee", new { @class = "nav-link text-black" })</li>
+            <li class="nav-item">@Html.ActionLink("Add Employee", "AddEmployee", "Employee", new { @class = "nav-link text-black" })</li>
+            <li class="nav-item">@Html.ActionLink("Add Department", "AddDepartment", "Employee", new { @class = "nav-link text-black" })</li>
+        </ul>
+    </nav>
+
+    <div class="container body-content mb-2">
+        @RenderBody()
+    </div>
+
+</body>
+</html>
