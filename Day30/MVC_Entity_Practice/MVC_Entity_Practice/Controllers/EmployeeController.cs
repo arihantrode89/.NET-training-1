@@ -26,7 +26,9 @@ namespace MVC_Entity_Practice.Controllers
 
         public ActionResult EditEmployee(int id)
         {
-            return View();
+            var context = new EmployeeContext();
+            var employee = context.Employees.Where(s=>s.Id==id).FirstOrDefault();
+            return View(employee);
         }
 
         [HttpPost]
@@ -46,7 +48,9 @@ namespace MVC_Entity_Practice.Controllers
 
         public ActionResult EditDepartment(int id)
         {
-            return View();
+            var context = new EmployeeContext();
+            var dept = context.Departments.Where(s => s.Id == id).FirstOrDefault();
+            return View(dept);
         }
 
         [HttpPost]
@@ -92,19 +96,26 @@ namespace MVC_Entity_Practice.Controllers
         [HttpPost]
         public ActionResult AddEmployee(string Name,string Email,string Phone,string Position,int DepartmentId)
         {
-            var context = new EmployeeContext();
-            Employee emp = new Employee()
+            if (ModelState.IsValid)
             {
-                Name = Name,
-                Email = Email,
-                Phone = Phone,
-                Position = Position,
-                DepartmentId = DepartmentId
-            };
-            context.Employees.Add(emp);
-            context.SaveChanges();
-            var data = context.Employees.ToList();
-            return View("GetEmployee",data);
+                var context = new EmployeeContext();
+                Employee emp = new Employee()
+                {
+                    Name = Name,
+                    Email = Email,
+                    Phone = Phone,
+                    Position = Position,
+                    DepartmentId = DepartmentId
+                };
+                context.Employees.Add(emp);
+                context.SaveChanges();
+                var data = context.Employees.ToList();
+                return View("GetEmployee", data);
+            }
+            else
+            {
+                return Redirect("Index");
+            }
         }
         public ActionResult AddDepartment()
         {

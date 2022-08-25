@@ -14,5 +14,6 @@ namespace MVC_Entity_Practice.Models
         }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Student> Students { get; set; }
     }
 }

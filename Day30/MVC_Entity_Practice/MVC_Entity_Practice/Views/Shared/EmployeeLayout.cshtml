@@ -7,6 +7,10 @@
     <title>ProductLayout</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+
 
 </head>
 <body>
@@ -24,5 +28,6 @@
     <div class="container body-content mb-2">
         @RenderBody()
     </div>
+    
 </body>
 </html>
