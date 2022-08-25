@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "GetEmployee";
     Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+    var context = new MVC_Entity_Practice.Models.EmployeeContext();
 }
 
 
@@ -11,7 +12,7 @@
     {
         <div class="col py-2">
 
-            <div class="card bg-light">
+            <div class="card bg-light" style="width:500px;">
                 
                 <div class="card-header">
                     Employee
@@ -22,13 +23,14 @@
                 Email:@item.Email
                 Phone:@item.Phone
                 Position:@item.Position
-                DepartmentId:@item.Departments.Name
+                Department:@context.Departments.Where(s => s.Id == item.DepartmentId).Select(s => s.Name).First()
                 </pre>
                 @*@Html.ActionLink(" ", "EditEmployee", new {id=item.Id }, new { @class = "stretched-link" })*@
                 </div>
                 <div class="card-footer text-center">
                     @Html.ActionLink("Edit", "EditEmployee", new { id = item.Id }, new { @class = "btn btn-primary" })
                     @Html.ActionLink("View", "GetEmpDetails", new { id=item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "DeleteEmployee", new { id=item.Id }, new { @class = "btn btn-primary" })
                 </div>
             </div>
         </div>

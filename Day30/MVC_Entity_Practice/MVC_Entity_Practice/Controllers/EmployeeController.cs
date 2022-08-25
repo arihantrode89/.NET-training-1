@@ -17,6 +17,13 @@ namespace MVC_Entity_Practice.Controllers
             return View(employee);
         }
 
+        public ActionResult GetDepartment()
+        {
+            var context = new EmployeeContext();
+            var employee = context.Departments.ToList();
+            return View(employee);
+        }
+
         public ActionResult EditEmployee(int id)
         {
             return View();
@@ -37,32 +44,85 @@ namespace MVC_Entity_Practice.Controllers
             return View("GetEmployee",context.Employees.ToList());
         }
 
+        public ActionResult EditDepartment(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditDepartment(int Id, string Name,string Location)
+        {
+            var context = new EmployeeContext();
+            var deptrow = context.Departments.Where(s => s.Id == Id).FirstOrDefault();
+            deptrow.Name = Name;
+            deptrow.Location = Location;
+            context.SaveChanges();
+
+            return View("GetDepartment", context.Departments.ToList());
+        }
+
+        public ActionResult DeleteEmployee(int id)
+        {
+            var context = new EmployeeContext();
+            var data = context.Employees.Where(s => s.Id == id).FirstOrDefault();
+            context.Employees.Remove(data);
+            context.SaveChanges();
+            return View("GetEmployee",context.Employees.ToList());
+        }
+
+        public ActionResult DeleteDepartment(int id)
+        {
+            var context = new EmployeeContext();
+            var data = context.Departments.Where(s => s.Id == id).FirstOrDefault();
+            context.Departments.Remove(data);
+            context.SaveChanges();
+            return View("GetDepartment", context.Departments.ToList());
+        }
         public ActionResult GetEmpDetails(int id)
         {
             var context = new EmployeeContext();
             var data = context.Employees.Where(s => s.Id == id).FirstOrDefault();
             return View(data);
         }
-        public void AddEmployee()
+        
+        public ActionResult AddEmployee()
         {
-            //EmployeeContext context = new EmployeeContext();
-            //Department dept = new Department()
-            //{
-            //    Id=100,
-            //    Name="Information Technology",
-            //    Location="Bangalore",
-            //    Employees=new List<Employee>() 
-            //    { 
-            //        new Employee(){ Id=1,Name="Arihant",Email="arihantrode89@gmail.com",Phone="9637010084",Position="Software Engineer"},
-            //        new Employee(){ Id=2,Name="Ayushya",Email="ayushya@gmail.com",Phone="9637320084",Position="Software Engineer"},
-            //        new Employee(){ Id=3,Name="Ayush",Email="Ayush@gmail.com",Phone="9637340084",Position="Software Tester"},
-            //        new Employee(){ Id=4,Name="Amit",Email="Amit@gmail.com",Phone="9667010084",Position="Software Engineer"},
-            //        new Employee(){ Id=5,Name="Ashish",Email="Ashish@gmail.com",Phone="9656010084",Position="Software Engineer"},
-            //        new Employee(){ Id=6,Name="Aditya",Email="Aditya@gmail.com",Phone="9637810084",Position="Software Tester"},
-            //    }
-            //};
-            //context.Departments.Add(dept);
-            //context.SaveChanges();
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddEmployee(string Name,string Email,string Phone,string Position,int DepartmentId)
+        {
+            var context = new EmployeeContext();
+            Employee emp = new Employee()
+            {
+                Name = Name,
+                Email = Email,
+                Phone = Phone,
+                Position = Position,
+                DepartmentId = DepartmentId
+            };
+            context.Employees.Add(emp);
+            context.SaveChanges();
+            var data = context.Employees.ToList();
+            return View("GetEmployee",data);
+        }
+        public ActionResult AddDepartment()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddDepartment(string Name,string Location)
+        {
+            var context = new EmployeeContext();
+            Department dept = new Department()
+            {
+                Name = Name,
+                Location = Location
+            };
+            context.Departments.Add(dept);
+            context.SaveChanges();
+            return View("GetEmployee",context.Employees.ToList());
         }
     }
 }

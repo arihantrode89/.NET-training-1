@@ -214,6 +214,10 @@
     <Content Include="Views\Employee\GetEmployee.cshtml" />
     <Content Include="Views\Employee\EditEmployee.cshtml" />
     <Content Include="Views\Employee\GetEmpDetails.cshtml" />
+    <Content Include="Views\Employee\AddEmployee.cshtml" />
+    <Content Include="Views\Employee\AddDepartment.cshtml" />
+    <Content Include="Views\Employee\GetDepartment.cshtml" />
+    <Content Include="Views\Employee\EditDepartment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
