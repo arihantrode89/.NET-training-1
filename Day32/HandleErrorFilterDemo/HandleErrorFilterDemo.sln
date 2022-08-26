@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HandleErrorFilterDemo", "HandleErrorFilterDemo\HandleErrorFilterDemo.csproj", "{EC6BB233-99B6-41E3-B71E-31F84F099687}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC6BB233-99B6-41E3-B71E-31F84F099687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC6BB233-99B6-41E3-B71E-31F84F099687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC6BB233-99B6-41E3-B71E-31F84F099687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC6BB233-99B6-41E3-B71E-31F84F099687}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE5A644B-CC04-4F2C-9504-BBA5D0519349}
+	EndGlobalSection
+EndGlobal

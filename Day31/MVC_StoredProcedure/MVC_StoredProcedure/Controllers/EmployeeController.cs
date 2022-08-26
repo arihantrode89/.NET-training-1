@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -7,8 +8,10 @@ using MVC_StoredProcedure.Models;
 
 namespace MVC_StoredProcedure.Controllers
 {
+    [OutputCache(Duration =10)]
     public class EmployeeController : Controller
     {
+       
         // GET: Employee
         public ActionResult GetEmployee()
         {
@@ -59,7 +62,8 @@ namespace MVC_StoredProcedure.Controllers
         public ActionResult DeleteEmployee(int id)
         {
             var context = new EmployeeContext();
-            context.Database.ExecuteSqlCommand($"DeleteEmployee {id}");
+            context.Sp_delete(id);
+            //context.Database.ExecuteSqlCommand($"DeleteEmployee {id}");
             return View("GetEmployee", context.Employees.ToList());
         }
 
@@ -91,10 +95,8 @@ namespace MVC_StoredProcedure.Controllers
                 var data = context.Employees.ToList();
                 return View("GetEmployee", data);
             }
-            else
-            {
-                return Redirect("Index");
-            }
+            return Redirect("Index");
+
         }
         public ActionResult AddDepartment()
         {

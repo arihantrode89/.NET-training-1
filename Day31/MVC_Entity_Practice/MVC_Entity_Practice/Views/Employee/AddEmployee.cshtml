@@ -7,10 +7,10 @@
 
 <h2>AddEmployee</h2>
 
-@using (Html.BeginForm("AddEmployee","Employee",FormMethod.Post)) 
+@using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Employee</h4>
         <hr />
@@ -49,7 +49,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.DepartmentId, "DepartmentId", htmlAttributes: new { @class = "control-label col-md-2" })
-            @{ 
+            @{
                 var data = new MVC_Entity_Practice.Models.EmployeeContext();
                 var sel = data.Departments.Select(s => s.Id);
             }
@@ -70,3 +70,7 @@
 <div>
     @Html.ActionLink("Back to List", "GetEmployee")
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

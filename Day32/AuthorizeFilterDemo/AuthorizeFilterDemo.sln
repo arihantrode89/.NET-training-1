@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthorizeFilterDemo", "AuthorizeFilterDemo\AuthorizeFilterDemo.csproj", "{670E9EE7-DD46-49AE-8972-1851EF1D8E9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{670E9EE7-DD46-49AE-8972-1851EF1D8E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{670E9EE7-DD46-49AE-8972-1851EF1D8E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{670E9EE7-DD46-49AE-8972-1851EF1D8E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{670E9EE7-DD46-49AE-8972-1851EF1D8E9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {10DA9149-FCE7-4E54-B3B6-F0CF1A0F63D4}
+	EndGlobalSection
+EndGlobal
