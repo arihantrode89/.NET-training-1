@@ -1,0 +1,40 @@
+﻿@model MondayAssesment.Models.Department
+
+@{
+    ViewBag.Title = "AddDepartment";
+    Layout = "~/Views/Shared/EmployeeLayout.cshtml";
+}
+
+<h5 class="alert-danger">@TempData["ErrorMessage"]</h5>
+
+@using (Html.BeginForm("AddDepartment","Employee",FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h5>Department</h5>
+        <br /><br/>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeptName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeptName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DeptName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "GetDepartment")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
