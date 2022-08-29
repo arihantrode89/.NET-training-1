@@ -26,7 +26,8 @@ namespace MVC_StoredProcedure.Models
         }
         public virtual void Sp_delete(int id)
         {
-            ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<Employee>($"DeleteEmployee {id}");
+            var Id = new ObjectParameter("Id", id);
+            ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Employee>($"DeleteEmployee",Id);
         }
     }
 }
