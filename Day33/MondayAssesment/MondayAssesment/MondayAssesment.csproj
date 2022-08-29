@@ -133,6 +133,7 @@
     <Compile Include="Controllers\IEmployee.cs" />
     <Compile Include="Filters\DepartmentException.cs" />
     <Compile Include="Filters\EmployeeException.cs" />
+    <Compile Include="Filters\ParticularEmployeeException.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -28,11 +28,21 @@ namespace MondayAssesment.Controllers
             
         }
 
+        [ParticularEmployeeException]
         public ActionResult GetEmployeesByDepartment(int id)
         {
             var db = new EmployeeContext();
             var Data = db.Employees.Where(s=>s.DepartmentId==id).ToList();
-            return View("GetEmployees",Data);
+            if (Data.Count > 0)
+            {
+                return View("GetEmployees", Data);
+            }
+            else
+            {
+                var name = db.Departments.Where(s => s.DeptId == id).Select(s => s.DeptName).FirstOrDefault();
+                throw new Exception($"{name} has 0 Employees so you need to add employees first");
+            }
+
         }
         public ActionResult AddEmployee()
         {
