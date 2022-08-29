@@ -11,8 +11,8 @@ namespace MondayAssesment.Filters
         public void OnException(ExceptionContext filterContext)
         {
             filterContext.ExceptionHandled = true;
-            filterContext.Result = new RedirectResult("~/Employee/AddEmployee/");
-             
+            int id = Convert.ToInt32(filterContext.RouteData.Values["id"].ToString());
+            filterContext.Result = new RedirectResult($"~/Employee/AddEmployee/{id}");
             filterContext.Controller.TempData["ErrorMessage"] = filterContext.Exception.Message;
         }
     }
