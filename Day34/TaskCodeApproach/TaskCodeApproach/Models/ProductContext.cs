@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
+using TaskCodeApproach.ViewModel;
 
 namespace TaskCodeApproach.Models
 {
@@ -31,6 +33,12 @@ namespace TaskCodeApproach.Models
                      .Update(u => u.HasName("UpdateCategory", "dbo"))
                      .Delete(d => d.HasName("DeleteCategory", "dbo"))
                 );
+        }
+
+        public IEnumerable<ProductCategory> Sp_GetProducts()
+        {
+            var data = ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreQuery<ProductCategory>("GetProducts");
+            return data;
         }
 
 

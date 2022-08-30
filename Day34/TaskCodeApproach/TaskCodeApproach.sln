@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskCodeApproach", "TaskCodeApproach\TaskCodeApproach.csproj", "{DAF7A5A4-61BC-4533-BB84-AA4035BF1638}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUnitTest", "WebUnitTest\WebUnitTest.csproj", "{1DFB1694-8BA3-40AD-8FCC-7E866ADBF329}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DAF7A5A4-61BC-4533-BB84-AA4035BF1638}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAF7A5A4-61BC-4533-BB84-AA4035BF1638}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAF7A5A4-61BC-4533-BB84-AA4035BF1638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DFB1694-8BA3-40AD-8FCC-7E866ADBF329}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DFB1694-8BA3-40AD-8FCC-7E866ADBF329}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DFB1694-8BA3-40AD-8FCC-7E866ADBF329}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DFB1694-8BA3-40AD-8FCC-7E866ADBF329}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

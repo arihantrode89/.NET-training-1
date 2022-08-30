@@ -10,7 +10,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "TaskCodeApproach.Models.ProductContext";
         }
 
         protected override void Seed(TaskCodeApproach.Models.ProductContext context)

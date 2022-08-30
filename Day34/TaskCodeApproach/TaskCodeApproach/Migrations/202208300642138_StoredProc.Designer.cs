@@ -7,13 +7,13 @@ namespace TaskCodeApproach.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class renameproc : IMigrationMetadata
+    public sealed partial class StoredProc : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(renameproc));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(StoredProc));
         
         string IMigrationMetadata.Id
         {
-            get { return "202208300443516_renameproc"; }
+            get { return "202208300642138_StoredProc"; }
         }
         
         string IMigrationMetadata.Source

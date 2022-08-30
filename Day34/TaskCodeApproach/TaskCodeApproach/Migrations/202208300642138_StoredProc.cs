@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class StoredProc : DbMigration
     {
         public override void Up()
         {
@@ -111,7 +111,7 @@
             );
             
             CreateStoredProcedure(
-                "dbo.DeleteProdcut",
+                "dbo.DeleteProduct",
                 p => new
                     {
                         ProductId = p.Int(),
@@ -125,7 +125,7 @@
         
         public override void Down()
         {
-            DropStoredProcedure("dbo.DeleteProdcut");
+            DropStoredProcedure("dbo.DeleteProduct");
             DropStoredProcedure("dbo.UpdateProduct");
             DropStoredProcedure("dbo.InsertProduct");
             DropStoredProcedure("dbo.DeleteCategory");

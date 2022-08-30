@@ -38,7 +38,7 @@
                 var sel = db.Categories.Select(s => s.CategoryId);
             }
             <div class="col-md-10">
-                @Html.DropDownList("CategoryId", new SelectList(sel), htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("CategoryId", new SelectList(db.Categories,"CategoryId","CategoryName"), htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
             </div>
         </div>
