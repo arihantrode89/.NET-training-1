@@ -16,8 +16,8 @@ namespace StateManagementASP.NET
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Cookies["Name"].Value = TextBox1.Text;
-            Response.Cookies["Name"].Expires = DateTime.Now.AddMinutes(1);
+            Response.Cookies["name"].Value = TextBox1.Text;
+            Response.Cookies["name"].Expires = DateTime.Now.AddMinutes(20);
             Label1.Text = "Cookie Created";
             TextBox1.Text = " ";
 
@@ -25,13 +25,13 @@ namespace StateManagementASP.NET
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            if (Response.Cookies["Name"] != null)
+            if (Response.Cookies["name"].Values == null)
             {
-                TextBox2.Text = Response.Cookies["Name"].Value;
+                TextBox2.Text = "No Cookie Found";
             }
             else
             {
-                TextBox2.Text = "No Cookie Found";
+                TextBox2.Text = Response.Cookies["name"].Value;
             }
         }
     }
