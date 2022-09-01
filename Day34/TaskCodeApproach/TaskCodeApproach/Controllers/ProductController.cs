@@ -24,7 +24,7 @@ namespace TaskCodeApproach.Controllers
         public ActionResult AddProduct(Product ptd)
         {
             var db = new ProductContext();
-            db.Database.ExecuteSqlCommand($"InsertProduct '{ptd.ProductName}',{ptd.Price},{ptd.CategoryId}");
+            db.Sp_AddProduct(ptd);
             return Redirect("~/Product/GetProducts");
         }
 

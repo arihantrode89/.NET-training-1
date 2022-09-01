@@ -41,6 +41,12 @@ namespace TaskCodeApproach.Models
             return data;
         }
 
+        public int Sp_AddProduct(Product ptd)
+        {
+            var count = ((IObjectContextAdapter)this).ObjectContext.ExecuteStoreCommand($"InsertProduct '{ptd.ProductName}',{ptd.Price},{ptd.CategoryId}");
+            return count;
+        }
+
 
     }
 }

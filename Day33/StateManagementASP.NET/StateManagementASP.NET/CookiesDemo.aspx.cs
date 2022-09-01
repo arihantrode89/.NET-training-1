@@ -25,7 +25,7 @@ namespace StateManagementASP.NET
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            if (Response.Cookies["name"].Values == null)
+            if (Response.Cookies["name"].Value == null)
             {
                 TextBox2.Text = "No Cookie Found";
             }
