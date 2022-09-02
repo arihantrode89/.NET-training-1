@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebApiConsume.Models.Employee>
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<br/>
+@Html.ActionLink("Add", "AddEmployee",null, htmlAttributes: new { @class = "btn btn-primary" })
+<br/>
+
+
+<div class="row px-2 py-2">
+    @foreach (var item in Model)
+    {
+        <div class="col py-2">
+
+            <div class="card" style="width: 500px; background-color: rgb(0 0 0 / 20%);">
+
+                <div class="card-header">
+                    Employee
+                </div>
+                <div class="card-body">
+                    <pre>
+                Name:@item.Name
+                Gender:@item.Gender
+                City:@item.City
+                Salary:@item.Salary
+                </pre>
+                </div>
+                <div class="card-footer">
+                    @Html.ActionLink("Edit", "EditEmployee", new { id = item.EmployeeId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "DeleteEmployee", new { id = item.EmployeeId }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

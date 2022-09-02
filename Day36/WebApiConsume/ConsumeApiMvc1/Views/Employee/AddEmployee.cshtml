@@ -1,0 +1,52 @@
+﻿@model WebApiConsume.Models.Employee
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<section class="px-2 py-2">
+    <div class="container">
+        @using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post))
+        {
+            <div class="row px-2 py-2">
+                <div class="col py-2">
+                    @Html.EditorFor(s => s.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Name" } })
+                    @Html.ValidationMessageFor(s => s.Name, "", new {@class="text-danger"})
+                </div>
+            </div>
+            <div class="row px-2 py-2">
+                <div class="col py-2">
+                    @Html.EditorFor(s => s.City, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter City" } })
+                    @Html.ValidationMessageFor(s => s.City, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="row px-2 py-2">
+                <div class="col py-2">
+                    @Html.EditorFor(s => s.Gender, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Gender" } })
+                    @Html.ValidationMessageFor(s => s.Gender, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="row px-2 py-2">
+                <div class="col py-2">
+                    @Html.EditorFor(s => s.Salary, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Salary" } })
+                    @Html.ValidationMessageFor(s => s.Salary, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
+            <div class="row px-2 py-2">
+                @{
+                    var db = new WebApiConsume.Models.MondayAssesmentEntities1();
+                }
+                <div class="col py-2">
+                    @Html.DropDownListFor(s => s.DepartmentId, new SelectList(db.Departments, "DeptId", "DeptName"), htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="mx-auto d-grid col">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        }
+    </div>
+</section>
