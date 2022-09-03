@@ -16,7 +16,7 @@ namespace ConsumeApiMvc1
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Employee", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "AjaxDemo", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

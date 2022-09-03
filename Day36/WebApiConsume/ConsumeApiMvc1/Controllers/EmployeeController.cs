@@ -12,6 +12,7 @@ namespace ConsumeApiMvc1.Controllers
     public class EmployeeController : Controller
     {
         // GET: Employee
+        [HttpGet]
         public ActionResult Index()
         {
             dynamic data;

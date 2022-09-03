@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Cors;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -37,11 +38,7 @@ namespace WebApiConsume.Controllers
         {
             var data = JsonConvert.DeserializeObject<Employee>(emp.ToString());
             var employee = db.Employees.FirstOrDefault(s => s.EmployeeId == data.EmployeeId);
-            employee.Name = data.Name;
-            employee.Gender = data.Gender;
-            employee.City = data.City;
-            employee.Salary = data.Salary;
-            employee.DepartmentId = data.DepartmentId;
+            db.UpdateEmployee(data.EmployeeId, data.Name, data.Gender, data.City, data.Salary, data.DepartmentId);
             db.SaveChanges();
         }
 

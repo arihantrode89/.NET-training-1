@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+
+    <script>
+            $.ajax({
+                    type: "GET",
+                url: "https://localhost:44333/GetEmployee",
+                    contentType: "application/json",
+                dataType: "jsonp",
+                headers: { 'Access-Control-Allow-Origin': '*', "Access-Control-Allow-Methods": "GET,POST" },
+                success: function (data) {
+                    //var Emp = JSON.stringify(data);
+                    console.log(data);
+                    $.each(data, function (index, value) {
+                        console.log(value.Name);
+                        $("#emptable").append("<tr><td>" + value.Name + "</td> <td>" + value.Gender + "</td><td>" + value.City + "</td><td>" + value.Salary +"</td> </tr>");
+                    });
+
+                    },
+                 failure: function (data) { alert(data); },
+                });
+    </script>
+</head>
+<body>
+    <div> 
+        <table class="border-1" id="emptable" style="border:5px solid;"></table>
+    </div>
+</body>
+</html>
