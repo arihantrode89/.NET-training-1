@@ -8,16 +8,16 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{67B1DF89-93AC-4895-A200-5B5353561224}</ProjectGuid>
+    <ProjectGuid>{4EEAA7F2-D335-4526-976F-9336106A00AD}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConsumeApiMvc1</RootNamespace>
-    <AssemblyName>ConsumeApiMvc1</AssemblyName>
+    <RootNamespace>RegistrationMVC</RootNamespace>
+    <AssemblyName>RegistrationMVC</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44330</IISExpressSSLPort>
+    <IISExpressSSLPort>44369</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -51,8 +51,8 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -116,28 +116,18 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="HtmlPage1.html" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
-    <Content Include="Scripts\CustomJSfile.js" />
-    <Content Include="Scripts\jquery-3.6.0.js" />
-    <Content Include="Scripts\jquery-3.6.0.min.js" />
-    <Content Include="Scripts\jquery-3.6.0.slim.js" />
-    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AjaxDemoController.cs" />
-    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,19 +154,15 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Registration\AddUser.cshtml" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.esm.min.js.map" />
     <Content Include="Scripts\bootstrap.esm.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
-    <Content Include="Views\Employee\AddEmployee.cshtml" />
-    <Content Include="Views\Employee\EditEmployee.cshtml" />
-    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.6.0.min.map" />
-    <Content Include="Views\AjaxDemo\Index.cshtml" />
-    <Content Include="Views\AjaxDemo\Add.cshtml" />
+    <Content Include="Views\Login\LoginUser.cshtml" />
+    <Content Include="Views\Login\ViewUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -189,9 +175,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebApiConsume\WebApiConsume.csproj">
-      <Project>{3fa10d30-7124-42a5-b313-cf61b3e80022}</Project>
-      <Name>WebApiConsume</Name>
+    <ProjectReference Include="..\RegistrationApi\ProjectApi.csproj">
+      <Project>{23bc2bba-d56d-444b-a8c4-67e7c7d12c6a}</Project>
+      <Name>ProjectApi</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -207,9 +193,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51189</DevelopmentServerPort>
+          <DevelopmentServerPort>63220</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44330/</IISUrl>
+          <IISUrl>https://localhost:44369/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

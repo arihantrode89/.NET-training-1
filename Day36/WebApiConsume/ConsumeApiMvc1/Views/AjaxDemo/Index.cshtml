@@ -12,10 +12,11 @@
     <script src="~/Scripts/jquery-3.6.0.min.js"></script>
 
     <script>
+        $(document).ready(function () {
             $.ajax({
-                    type: "GET",
+                type: "GET",
                 url: "https://localhost:44333/GetEmployee",
-                    contentType: "application/json",
+                contentType: "application/json",
                 dataType: "jsonp",
                 headers: { 'Access-Control-Allow-Origin': '*', "Access-Control-Allow-Methods": "GET,POST" },
                 success: function (data) {
@@ -23,17 +24,23 @@
                     console.log(data);
                     $.each(data, function (index, value) {
                         console.log(value.Name);
-                        $("#emptable").append("<tr><td>" + value.Name + "</td> <td>" + value.Gender + "</td><td>" + value.City + "</td><td>" + value.Salary +"</td> </tr>");
+                        $("#emptable").append("<tr><td>" + value.Name + "</td> <td>" + value.Gender + "</td><td>" + value.City + "</td><td>" + value.Salary + "</td> </tr>");
                     });
 
-                    },
-                 failure: function (data) { alert(data); },
-                });
+                },
+                failure: function (data) { alert(data); },
+            });
+
+            $("#Add").click(function () {
+                window.location.href("Add");
+            })
+        });
     </script>
 </head>
 <body>
     <div> 
         <table class="border-1" id="emptable" style="border:5px solid;"></table>
     </div>
+    <button type="button" id="Add">Add</button>
 </body>
 </html>

@@ -37,5 +37,10 @@ namespace ConsumeApiMvc1.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Add()
+        {
+            return View();
+        }
+
     }
 }
