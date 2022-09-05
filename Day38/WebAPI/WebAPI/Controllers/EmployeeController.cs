@@ -1,5 +1,4 @@
-﻿//using Microsoft.AspNetCore.Cors;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -7,13 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using WebApiConsume.Models;
+using WebAPI.Models;
 
-namespace WebApiConsume.Controllers
+namespace WebAPI.Controllers
 {
     public class EmployeeController : ApiController
     {
-        public MondayAssesmentEntities1 db = new MondayAssesmentEntities1();
+        public MondayAssesmentEntities db = new MondayAssesmentEntities();
 
         [HttpGet]
         [Route("GetEmployee")]
@@ -43,20 +42,10 @@ namespace WebApiConsume.Controllers
         }
 
         [HttpGet]
-        [Route("getempdetails/{id}")]
+        //[Route("GetEmpDetails",Name ="id")]
         public Employee GetEmpDetails(int id)
         {
             var data = db.Employees.FirstOrDefault(s => s.EmployeeId == id);
-            return data;
-        }
-
-        [HttpGet]
-        [Route("getempdetailsname")]
-        public Employee GetEmpDetailsByUsername(string Name)
-        {
-            //var query = Request.GetQueryNameValuePairs();
-            //var user = query.FirstOrDefault(s => s.Key == "Name").Value;
-            var data = db.Employees.FirstOrDefault(s => s.Name == Name);
             return data;
         }
 

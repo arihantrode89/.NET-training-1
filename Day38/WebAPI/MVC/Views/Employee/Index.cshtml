@@ -15,12 +15,12 @@
         $(document).ready(function () {
             $.ajax({
                 type: "GET",
-                url: "https://localhost:44333/GetEmployee",
+                url: "https://localhost:44372/GetEmployee",
                 contentType: "application/json",
-                dataType: "json",
+                dataType: "jsonp",
                 headers: { 'Access-Control-Allow-Origin': '*', "Access-Control-Allow-Methods": "GET,POST" },
                 success: function (data) {
-                    //var Emp = JSON.stringify(data);
+                    data = JSON.stringify(data);
                     console.log(data);
                     $.each(data, function (index, value) {
                         console.log(value.Name);
@@ -38,7 +38,7 @@
     </script>
 </head>
 <body>
-    <div> 
+    <div>
         <table class="border-1" id="emptable" style="border:5px solid;"></table>
     </div>
     <button type="button" id="Add">Add</button>

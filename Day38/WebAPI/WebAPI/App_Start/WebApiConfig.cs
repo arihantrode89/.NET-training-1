@@ -1,12 +1,10 @@
-﻿//using Microsoft.AspNetCore.Cors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using WebApiContrib.Formatting.Jsonp;
 
-namespace WebApiConsume
+namespace WebAPI
 {
     public static class WebApiConfig
     {
@@ -22,13 +20,9 @@ namespace WebApiConsume
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);
 
-            //var json = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
-            //config.Formatters.Add(json);
-
-
+            var json = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
+            config.Formatters.Add(json);
         }
     }
 }

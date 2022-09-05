@@ -53,7 +53,7 @@ namespace ConsumeApiMvc1.Controllers
 
         public ActionResult EditEmployee(int id)
         {
-            string url = $"https://localhost:44333/api/Employee/GetEmpDetails/{id}";
+            string url = $"https://localhost:44333/getempdetails/{id}";
             dynamic data;
             using (WebClient webClient = new WebClient())
             {
