@@ -60,8 +60,16 @@ function editUi() {
 }
 
 
-function edit() {
-    obj = { EmployeeId: $("#EmployeeId").val(), Name: $("#Name").val(), City: $("#City").val(), Gender: $("#Gender").val(), Salary: $("#Salary").val(), DepartmentId: $("#DepartmentId").val() };
+function edit(key) {
+    //obj = { EmployeeId: $("#EmployeeId").val(), Name: $("#Name").val(), City: $("#City").val(), Gender: $("#Gender").val(), Salary: $("#Salary").val(), DepartmentId: $("#DepartmentId").val() };
+    var sel = $("#" + key + ">td").children();
+    var Id = $(sel[0]).val();
+    var Name = $(sel[1]).val();
+    var City = $(sel[2]).val();
+    var Salary = $(sel[3]).val();
+    var Gender = $(sel[4]).val();
+    var DeptId = $(sel[5]).val();
+    obj = { EmployeeId: Id, Name: Name, City: City, Gender: Gender, Salary: Salary, DepartmentId: DeptId };
     console.log(obj);
     $.ajax({
         type: "PUT",
@@ -69,7 +77,7 @@ function edit() {
         dataType: "json",
         headers: { 'Access-Control-Allow-Origin': '*', "Access-Control-Allow-Methods": "GET,POST" },
         data: obj,
-        success: function () { alert("Done"); },
+        success: function () { Redirect("Employee/Index"); },
         failure: function () { alert("Fail"); }
     });
 }
@@ -119,16 +127,16 @@ function dynamicedit() {
         success: function (data) {
             var ip = "<td><input type=text id=0 value='1' /></td>"
             $("#emptable").append(" ");
-            $.each(data, function (i, data) {
+            $.each(data, function (key, data) {
                 var row1 =
-                    "<tr>"+
+                    "<tr id='1' >".replace("1",key)+
                 "<td> <input disabled='disabled' id=0 value=1 /> </td>".replace("0", "EmployeeId").replace("1", data.EmployeeId) +
                     ip.replace("0", "Name").replace("1", data.Name) +
                     ip.replace("0", "City").replace("1", data.City) +
                     ip.replace("0", "Salary").replace("1", data.Salary) +
                     ip.replace("0", "Gender").replace("1", data.Gender) +
                     ip.replace("0", "DepartmentId").replace("1", data.DepartmentId) +
-                    "<td> <input type='submit' id='editbtn' value='Edit' onclick='edit();'> </td> " + "</tr>"
+                    "<td> <input type='submit' id='editbtn' value='Edit' onclick='edit("+key+");'> </td> " + "</tr>"
                 $("#emptable").append(row1);
 
             })
