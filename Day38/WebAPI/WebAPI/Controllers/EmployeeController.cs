@@ -42,10 +42,20 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        //[Route("GetEmpDetails",Name ="id")]
+        [Route("getempdetails/{id}")]
         public Employee GetEmpDetails(int id)
         {
             var data = db.Employees.FirstOrDefault(s => s.EmployeeId == id);
+            return data;
+        }
+
+        [HttpGet]
+        [Route("getempdetailsname")]
+        public Employee GetEmpDetailsByUsername(string Name)
+        {
+            //var query = Request.GetQueryNameValuePairs();
+            //var user = query.FirstOrDefault(s => s.Key == "Name").Value;
+            var data = db.Employees.FirstOrDefault(s => s.Name == Name);
             return data;
         }
 
@@ -56,6 +66,14 @@ namespace WebAPI.Controllers
             //var data = db.Employees.FirstOrDefault(s => s.EmployeeId == id);
             //db.Employees.Remove(data);
             db.SaveChanges();
+        }
+
+        [HttpGet]
+        [Route("GetDepartment")]
+        public List<Department> GetDepartment()
+        {
+            List<Department> data = db.Departments.ToList();
+            return data;
         }
     }
 }

@@ -20,8 +20,10 @@ namespace WebAPI.Models
         public MondayAssesmentEntities()
             : base("name=MondayAssesmentEntities")
         {
+            this.Configuration.ProxyCreationEnabled = false;
+
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

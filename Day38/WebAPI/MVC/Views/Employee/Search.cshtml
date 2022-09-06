@@ -1,0 +1,81 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    @*<script src="//code.jquery.com/jquery-1.10.2.js"></script>*@
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="~/Scripts/CustomJSfile.js"></script>
+</head>
+<body>
+    <div class="container">
+        <input id="search" /> &nbsp;
+        <input id="searchbtn" type="button" value="Search" onclick="search();" /> &nbsp;
+        <input id="edit" type="button" value="Edit" data-bs-toggle="modal" data-bs-target="#modalid1"  onclick="editUi();" />
+    </div>
+
+
+    <div class="modal fade" id="modalid1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Employee Edit</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="row px-2 py-2">
+                            <div class="col py-2">
+                                <input class="form-control" id="EmployeeIdEdit" name="EmployeeId" type="text" disabled="disabled" />
+                            </div>
+                        </div>
+
+                        <div class="row px-2 py-2">
+                            <div class="col py-2">
+                                <input class="form-control" id="NameEdit" name="Name" type="text" placeholder="Enter Name" />
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col py-2">
+                                <input class="form-control" id="CityEdit" name="City" type="text" placeholder="Enter City" />
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col py-2">
+                                <input class="form-control" id="GenderEdit" name="Name" type="text" placeholder="Enter Gender" />
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col py-2">
+                                <input class="form-control" id="SalaryEdit" name="Salary" type="text" placeholder="Enter Salary" />
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col py-2">
+                                <select id="DepartmentIdEdit" name="deptId" class="form-control">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mx-auto d-grid col">
+                            <input id="add" type="button" value="Update" onclick="editmodal();" class="btn btn-primary" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

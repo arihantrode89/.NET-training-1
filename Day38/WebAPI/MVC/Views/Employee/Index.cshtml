@@ -10,37 +10,80 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <script src="~/Scripts/jquery-3.6.0.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $.ajax({
-                type: "GET",
-                url: "https://localhost:44372/GetEmployee",
-                contentType: "application/json",
-                dataType: "jsonp",
-                headers: { 'Access-Control-Allow-Origin': '*', "Access-Control-Allow-Methods": "GET,POST" },
-                success: function (data) {
-                    data = JSON.stringify(data);
-                    console.log(data);
-                    $.each(data, function (index, value) {
-                        console.log(value.Name);
-                        $("#emptable").append("<tr><td>" + value.Name + "</td> <td>" + value.Gender + "</td><td>" + value.City + "</td><td>" + value.Salary + "</td> </tr>");
-                    });
-
-                },
-                failure: function (data) { alert(data); },
-            });
-
-            $("#Add").click(function () {
-                window.location.href("Add");
-            })
-        });
-    </script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@
+    <script src="~/Scripts/CustomJSfile.js"></script>
 </head>
 <body>
     <div>
-        <table class="border-1" id="emptable" style="border:5px solid;"></table>
+        <form id="showupdate" method="post">
+            <table class="table-striped" id="emptable" style="border:5px solid;">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Salary</th>
+                    <th>Gender</th>
+                    <th>DepartmentID</th>
+                </tr>
+            </table>
+        </form>
     </div>
-    <button type="button" id="Add">Add</button>
+    <button type="button" id="Editbtn" onclick="dynamicedit();" class="btn btn-primary">Edit View</button>
+    <button type="button" id="Viewbtn" onclick="viewdata();" class="btn btn-primary">Simple View</button>
+    <button type="button" id="Add" data-bs-toggle="modal" data-bs-target="#modalid" class="btn btn-primary">Add Employee</button>
+
+
+
+
+    <div class="modal fade" id="modalid">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Employee Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="row px-2 py-2">
+                            <div class="col py-2">
+                                <input class="form-control" id="Name" name="Name" type="text" placeholder="Enter Name" />
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col py-2">
+                                <input class="form-control" id="City" name="City" type="text" placeholder="Enter City" />
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col py-2">
+                                <input class="form-control" id="Gender" name="Name" type="text" placeholder="Enter Gender" />
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col py-2">
+                                <input class="form-control" id="Salary" name="Salary" type="text" placeholder="Enter Salary" />
+                            </div>
+                        </div>
+                        <div class="row px-2 py-2">
+                            <div class="col py-2">
+                                <select id="DepartmentId" name="deptId" class="form-control">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mx-auto d-grid col">
+                            <input id="add" type="button" value="Add" onclick="FormSubmit();" class="btn btn-primary" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
 </body>
 </html>

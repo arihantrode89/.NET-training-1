@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using WebApiContrib.Formatting.Jsonp;
 
 namespace WebAPI
@@ -21,8 +22,11 @@ namespace WebAPI
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            var json = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
-            config.Formatters.Add(json);
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
+
+            //var json = new JsonpMediaTypeFormatter(config.Formatters.JsonFormatter);
+            //config.Formatters.Add(json);
         }
     }
 }
