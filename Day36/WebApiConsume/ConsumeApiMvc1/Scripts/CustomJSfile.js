@@ -47,7 +47,7 @@ function search() {
     console.log(username);
     $.ajax({
         type: "GET",
-        url: "https://localhost:44333/getempdetailsname?Name="+username,
+        url: "https://localhost:44333/getempdetailsname?Name=" + username,
         dataType: "json",
         headers: { 'Access-Control-Allow-Origin': '*', "Access-Control-Allow-Methods": "GET,POST" },
         success: function (data) {
@@ -77,8 +77,8 @@ function editUi() {
             var row1 =
                 "<br/><br/><br/><br/><br/><br/>" +
                 "<form id = 'editform'>" +
-                "<input type='hidden' id=0 value=1 />".replace("0", "EmployeeId").replace("1",data.EmployeeId)+
-                ip.replace("0", "Name").replace("1",data.Name) +
+                "<input type='hidden' id=0 value=1 />".replace("0", "EmployeeId").replace("1", data.EmployeeId) +
+                ip.replace("0", "Name").replace("1", data.Name) +
                 ip.replace("0", "City").replace("1", data.City) +
                 ip.replace("0", "Salary").replace("1", data.Salary) +
                 ip.replace("0", "Gender").replace("1", data.Gender) +
@@ -94,7 +94,7 @@ function editUi() {
 
 
 function edit() {
-    obj = { EmployeeId:$("#EmployeeId").val(),Name: $("#Name").val(), City: $("#City").val(), Gender: $("#Gender").val(), Salary: $("#Salary").val(), DepartmentId: $("#DepartmentId").val() };
+    obj = { EmployeeId: $("#EmployeeId").val(), Name: $("#Name").val(), City: $("#City").val(), Gender: $("#Gender").val(), Salary: $("#Salary").val(), DepartmentId: $("#DepartmentId").val() };
     console.log(obj);
     $.ajax({
         type: "PUT",
@@ -161,7 +161,7 @@ $(document).ready(function () {
         myfunction("Yellow");
     })
 
-    
+
     $("#pass").keyup(function () {
         passstrength();
     });

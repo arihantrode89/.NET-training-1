@@ -77,7 +77,7 @@ function edit(key) {
         dataType: "json",
         headers: { 'Access-Control-Allow-Origin': '*', "Access-Control-Allow-Methods": "GET,POST" },
         data: obj,
-        success: function () { Redirect("Employee/Index"); },
+        success: function () { Redirect("Index"); },
         failure: function () { alert("Fail"); }
     });
 }
@@ -136,7 +136,8 @@ function dynamicedit() {
                     ip.replace("0", "Salary").replace("1", data.Salary) +
                     ip.replace("0", "Gender").replace("1", data.Gender) +
                     ip.replace("0", "DepartmentId").replace("1", data.DepartmentId) +
-                    "<td> <input type='submit' id='editbtn' value='Edit' onclick='edit("+key+");'> </td> " + "</tr>"
+                    "<td> <input type='submit' id='editbtn' value='Edit' onclick='edit(" + key + ");'> </td> " +
+                    "<td> <input type='submit' id='delbtn' value='Delete' onclick='deleteemp("+data.EmployeeId+");'> </td> "+ "</tr>"
                 $("#emptable").append(row1);
 
             })
@@ -169,8 +170,8 @@ function viewdata() {
 
 function Redirect(url) {
 
-    //window.location.href = url;
-    window.location.assign(url);
+    window.location.href = url;
+    /*window.location.replace(url);*/
 }
 
 function GetDepartmentsAuto() {
@@ -190,6 +191,17 @@ function GetDepartmentsAuto() {
         },
     });
 }
+
+function deleteemp(id) {
+    $.ajax({
+        type: "Delete",
+        url: "https://localhost:44372/DelEmployee/"+id,
+        dataType: "json",
+        headers: { 'Access-Control-Allow-Origin': '*', "Access-Control-Allow-Methods": "GET,POST,Delete" },
+        success: function () { Redirect("Index"); },
+        failure: function () { alert("Fail"); }
+    });
+} 
 
 $(document).ready(function () {
 

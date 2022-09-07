@@ -60,6 +60,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete]
+        [Route("DelEmployee/{id}")]
         public void DelEmployee(int id)
         {
             db.DeleteEmployee(id);
