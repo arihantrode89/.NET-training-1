@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TokenApi", "TokenApi\TokenA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginMVC", "LoginMVC\LoginMVC.csproj", "{0AB84C90-BC27-404C-B773-F2CF45FF1EC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore", "MVCCore\MVCCore.csproj", "{B69F550C-D02A-4033-9A3E-85C78745B08C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0AB84C90-BC27-404C-B773-F2CF45FF1EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AB84C90-BC27-404C-B773-F2CF45FF1EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AB84C90-BC27-404C-B773-F2CF45FF1EC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B69F550C-D02A-4033-9A3E-85C78745B08C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B69F550C-D02A-4033-9A3E-85C78745B08C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B69F550C-D02A-4033-9A3E-85C78745B08C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B69F550C-D02A-4033-9A3E-85C78745B08C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

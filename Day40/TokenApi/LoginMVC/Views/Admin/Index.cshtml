@@ -24,8 +24,15 @@
                     <h6 class="align-content-center">User Profile</h6>
                 </div>
                 <div class="card-body">
-                    <pre>User Name: <label id="NameLbl" >Text</label><br />Email: <label id="EmailLbl"></label><br />Role: <label id="RoleLbl"></label>
+                    <pre>User Name:<label id="namelbl"> @Session["username"] </label><br />Email: <label id="emaillbl">@Session["email"]</label><br />Role: <label id="rolelbl">@Session["role"]</label>
                     </pre>
+                </div>
+                <div class="card-footer">
+                    <div class="mx-auto d-grid col-3">
+                        <form action="~/Login/Sample" method="get">
+                            <button class="btn btn-primary btn-md mb-2" type="submit" id="logoutbtn" @*onclick="Logout();"*@>Log Out</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

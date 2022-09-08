@@ -2,7 +2,11 @@
 function Login() {
     var username = $("#UserName").val();
     var password = $("#Password").val();
-    $.ajax({
+    if (sessionStorage.getItem("token")) {
+        postlogin();
+    }
+    else {
+        $.ajax({
             type: "POST",
             url: "https://localhost:44347/token",
             data: { Username: username, Password: password, grant_type: "password" },
@@ -17,13 +21,16 @@ function Login() {
                 }
             },
         });
+        
+
+    }
 }
 
 function postlogin() {
     var token = sessionStorage.getItem('token');
     $.ajax({
         type: "GET",
-        url: "https://localhost:44347/GetDetails",
+        url: "https://localhost:44347/Admin",
         dataType: "json",
         beforeSend: function (xhr) {
             xhr.setRequestHeader('Authorization', 'Bearer ' + token);
@@ -32,12 +39,7 @@ function postlogin() {
             sessionStorage.setItem("UserName", data.UserName);
             sessionStorage.setItem("Role", data.Role);
             sessionStorage.setItem("Email", data.EmailId);
-            if (data.Role == "Admin") {
-                window.location.replace("Admin/Index");
-            }
-            else if (data.Role == "Student") {
-                window.location.replace("Student/Index");
-            }
+            window.location.replace("User/Index");
         },
         statusCode: {
             401: function (message) {
