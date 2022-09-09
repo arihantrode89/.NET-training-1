@@ -1,4 +1,5 @@
-﻿using LoginMVC.Models;
+﻿using LoginMVC.Filters;
+using LoginMVC.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,8 @@ namespace LoginMVC.Controllers
     public class AdminController : Controller
     {
         // GET: User
-        
+
+        [AuthorizationFilter]
         public ActionResult Index()
         {
             return View();

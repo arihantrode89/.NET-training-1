@@ -21,7 +21,7 @@ namespace LoginMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string UserName,string Password)
+        public ActionResult Login(string UserName, string Password)
         {
             string url = "https://localhost:44347/token";
             string getdetails = "https://localhost:44347/getdetails";
@@ -35,9 +35,9 @@ namespace LoginMVC.Controllers
             {
                 web.Headers.Add("Accept:*/*");
                 web.Headers.Add("Content-type:application/x-www-form-urlencoded");
-                
+
                 var data = JsonConvert.SerializeObject(obj).ToString();
-                var resp = web.UploadValues(url,"Post",obj);
+                var resp = web.UploadValues(url, "Post", obj);
                 //var resp1= web.UploadData(url,"Post");
                 var str = Encoding.ASCII.GetString(resp);
                 var token = JsonConvert.DeserializeObject<Token>(str).access_token;
@@ -53,10 +53,20 @@ namespace LoginMVC.Controllers
 
 
             }
-            
+
 
 
             return RedirectToAction("Index", Session["role"].ToString());
+        }
+
+        public ActionResult Logout()
+        {
+
+            Session.Remove("token");
+            Session.Remove("username");
+            Session.Remove("role");
+            Session.Remove("email");
+            return View("Login");
         }
 
         public void Sample()
