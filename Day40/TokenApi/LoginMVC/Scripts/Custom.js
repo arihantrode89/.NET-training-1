@@ -1,4 +1,6 @@
-﻿var token;
+﻿const { Toast } = require("./bootstrap");
+
+var token;
 function Login() {
     var username = $("#UserName").val();
     var password = $("#Password").val();
@@ -60,6 +62,7 @@ $(document).ready(function () {
     $("#NameLbl").text(sessionStorage.getItem("UserName"));
     $("#EmailLbl").text(sessionStorage.getItem("Email"));
     $("#RoleLbl").text(sessionStorage.getItem("Role"));
+    Toast.call
 
     
 })

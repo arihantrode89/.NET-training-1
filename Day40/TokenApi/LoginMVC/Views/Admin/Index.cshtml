@@ -27,12 +27,12 @@
                     <pre>User Name:<label id="namelbl"> @Session["username"] </label><br />Email: <label id="emaillbl">@Session["email"]</label><br />Role: <label id="rolelbl">@Session["role"]</label>
                     </pre>
                 </div>
+                @*@Request.Cookies["UserData"]["Name"]*@
                 <div class="card-footer">
                     <div class="mx-auto d-grid col-3">
-                        <form action="~/Login/Sample" method="get">
-                            <button class="btn btn-primary btn-md mb-2" type="button" id="logoutbtn" onclick="Login/Logout">Log Out</button>
-                        </form>
+                        @Html.ActionLink("Log Out", "Logout","Login",null, new { @class = "btn btn-primary" })
                     </div>
+                    
                 </div>
             </div>
         </div>

@@ -15,17 +15,22 @@ namespace LoginMVC.Filters
 
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (filterContext.HttpContext.Session["token"].ToString()!=null && filterContext.HttpContext.Session["role"].ToString() == "Admin")
+            try
             {
-                //filterContext.Result = new ViewResult();
-                //filterContext.Result.ExecuteResult(filterContext.Controller.ControllerContext);
-            }
-            else
-            {
-                filterContext.Result = new ViewResult()
+                var a= filterContext.HttpContext.Request.Cookies["UserData"]["Name"];
+                if (filterContext.HttpContext.Session["token"].ToString() != null && filterContext.HttpContext.Session["role"].ToString() == "Admin")
                 {
-                    ViewName = "~Login/Login",
-                };
+                    //filterContext.Result = new ViewResult();
+                    //filterContext.Result.ExecuteResult(filterContext.Controller.ControllerContext);
+                }
+                else
+                {
+                    filterContext.Result = new RedirectResult("~Login/Login",true);
+                }
+            }
+            catch
+            {
+                filterContext.Result = new RedirectResult("~/Login/Login",true); ;
             }
         }
     }

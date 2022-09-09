@@ -51,12 +51,22 @@ namespace LoginMVC.Controllers
                 Session["role"] = userdata.Role;
                 Session["email"] = userdata.EmailId;
 
+                TempData["token"] = token;
+
+                HttpCookie cook = new HttpCookie("UserData");
+                cook["Name"] = userdata.UserName;
+                cook["role"] = userdata.Role;
+                cook["email"] = userdata.EmailId;
+
+                Response.Cookies.Add(cook);
+
 
             }
 
+            
 
+            return RedirectToActionPermanent("Index", Session["role"].ToString());
 
-            return RedirectToAction("Index", Session["role"].ToString());
         }
 
         public ActionResult Logout()
@@ -66,7 +76,7 @@ namespace LoginMVC.Controllers
             Session.Remove("username");
             Session.Remove("role");
             Session.Remove("email");
-            return View("Login");
+            return RedirectToAction("Login", "Login");
         }
 
         public void Sample()
