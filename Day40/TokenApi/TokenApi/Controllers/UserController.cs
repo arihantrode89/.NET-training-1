@@ -2,9 +2,15 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Hosting;
 using System.Web.Http;
 using TokenApi.Models;
 
@@ -41,6 +47,23 @@ namespace TokenApi.Controllers
             return db.UserManagements.FirstOrDefault(s => s.UserName == user.Name);
         }
 
+        [HttpPost]
+        [Route("Data")]
+        public void UploadFile([FromBody] JToken ee)
+        {
+
+            var data = JsonConvert.DeserializeObject<FileModel>(ee.ToString());
+            var bytes = Encoding.ASCII.GetBytes(data.Image);
+            var path = Path.Combine("~/UploadedData","image");
+            File.WriteAllBytes(HostingEnvironment.MapPath(path), bytes);
+            
+            //var img = (HttpPostedFileBase)new MemoryPostedFile(bytes,"sample.jpg");
+            //var path = Path.Combine("~/LoginMVC/UploadedData", img.FileName);
+            //img.SaveAs(path);
+            
+        }
+
+
         [Route("Gett")]
         [HttpPost]
         public UserManagement ABc([FromBody] JToken ee)
@@ -54,5 +77,34 @@ namespace TokenApi.Controllers
     {
         public string username { get; set; }
         public string password { get; set; }
+    }
+
+    public class FileModel
+    {
+        public string Image { get; set; }
+        public string Pdf { get; set; }
+    }
+
+    public class MemoryPostedFile : HttpPostedFileBase
+    {
+        private readonly byte[] fileBytes;
+
+        public MemoryPostedFile(byte[] fileBytes, string fileName = null)
+        {
+            this.fileBytes = fileBytes;
+            this.FileName = fileName;
+            this.InputStream = new MemoryStream(fileBytes);
+        }
+
+        public override int ContentLength => fileBytes.Length;
+
+        public override string FileName { get; }
+
+        public override Stream InputStream { get; }
+
+        public override void SaveAs(string filename)
+        {
+            base.SaveAs(filename);
+        }
     }
 }

@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<Employee>
+
+
+<div class="row px-2 py-2">
+    @foreach (var item in Model)
+    {
+        <div class="col py-2">
+
+            <div class="card bg-light" style="width:500px;">
+                
+                <div class="card-header">
+                    Employee
+                </div>
+                <div class="card-body">
+                <pre>
+                Name:@item.Name
+                Gender:@item.Gender
+                City:@item.City
+                Salary:@item.Salary
+                Department:@item.DepartmentId
+                </pre>
+                @*@Html.ActionLink(" ", "EditEmployee", new {id=item.Id }, new { @class = "stretched-link" })*@
+                </div>
+                <div class="card-footer text-center">
+                    @Html.ActionLink("Edit", "EditEmployee", new { id = item.EmployeeId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("View", "GetEmpDetails", new { id=item.EmployeeId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "DeleteEmployee", new { id=item.EmployeeId }, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+    }
+</div>

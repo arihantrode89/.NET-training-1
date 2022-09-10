@@ -1,4 +1,4 @@
-﻿const { Toast } = require("./bootstrap");
+﻿
 
 var token;
 function Login() {
@@ -62,7 +62,6 @@ $(document).ready(function () {
     $("#NameLbl").text(sessionStorage.getItem("UserName"));
     $("#EmailLbl").text(sessionStorage.getItem("Email"));
     $("#RoleLbl").text(sessionStorage.getItem("Role"));
-    Toast.call
 
     
 })
