@@ -41,7 +41,7 @@ namespace LoginMVC.Controllers
                 var str = Encoding.ASCII.GetString(target);
                 obj.Add("Image",str );
 
-
+                //webClient.UploadFile()
                 var resp = webClient.UploadValues("https://localhost:44347/Data", "Post", obj);
 
                 //var resp = webClient.UploadData("https://localhost:44347/Data", "Post", target);

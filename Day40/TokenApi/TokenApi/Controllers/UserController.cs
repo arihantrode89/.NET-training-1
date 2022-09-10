@@ -52,15 +52,48 @@ namespace TokenApi.Controllers
         public void UploadFile([FromBody] JToken ee)
         {
 
-            var data = JsonConvert.DeserializeObject<FileModel>(ee.ToString());
-            var bytes = Encoding.ASCII.GetBytes(data.Image);
-            var path = Path.Combine("~/UploadedData","image");
-            File.WriteAllBytes(HostingEnvironment.MapPath(path), bytes);
+            //var data = JsonConvert.DeserializeObject<FileModel>(ee.ToString());
+            //var bytes = Encoding.ASCII.GetBytes(data.Image);
+            //var path = Path.Combine("~/UploadedData","image");
+            //File.WriteAllBytes(HostingEnvironment.MapPath(path), bytes);
             
             //var img = (HttpPostedFileBase)new MemoryPostedFile(bytes,"sample.jpg");
             //var path = Path.Combine("~/LoginMVC/UploadedData", img.FileName);
             //img.SaveAs(path);
             
+        }
+
+        [HttpPost]
+        [Route("File")]
+        public async Task<string> Upload()
+        {
+
+            var http = HttpContext.Current;
+            var root = http.Server.MapPath("~/App_Data");
+
+            var stream = new MultipartFileStreamProvider(root);
+
+            try
+            {
+                await Request.Content.ReadAsMultipartAsync(stream);
+
+                foreach(var file in stream.FileData)
+                {
+                    string filename = file.Headers.ContentDisposition.FileName;
+                    filename = filename.Trim('"');
+                    string localfilename = file.LocalFileName;
+                    string path = Path.Combine(root, filename);
+                    File.Move(localfilename, path);
+                }
+                return "Successfully Uploaded";
+            }
+            catch(Exception e)
+            {
+                return $"Error:{e.Message}";
+            }
+
+            
+
         }
 
 

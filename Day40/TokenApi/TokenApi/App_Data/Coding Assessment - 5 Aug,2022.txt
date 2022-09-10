@@ -1,0 +1,32 @@
+
+Coding Assessment - 5 Aug,2022
+
+
+Ques1 - Create a Registration page using MVC and WebApi. Write registration code in WebApi and use MVC to take input from user.
+
+Fields - 
+
+Id - int
+UserName -string
+Password - string
+ConfirmPassword - string
+emailID - string
+City - string
+
+Validations - 
+
+1) UserName max length 20.
+2) Password and ConfirmPassword should match.
+3) Valid EmailId.
+4) No int value in City.
+
+Use Entity Framework for "Create" operation in database.
+
+Ques2 - Create LogIn page using MVC and WebApi.
+
+Fields - 
+
+UserName - string
+Password - string
+
+Use Entity Framework, proper validations,comments.

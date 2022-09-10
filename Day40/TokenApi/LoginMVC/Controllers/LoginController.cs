@@ -31,41 +31,51 @@ namespace LoginMVC.Controllers
             obj.Add("Password", Password);
             obj.Add("grant_type", "password");
 
-            using (WebClient web = new WebClient())
+            try
             {
-                web.Headers.Add("Accept:*/*");
-                web.Headers.Add("Content-type:application/x-www-form-urlencoded");
+                using (WebClient web = new WebClient())
+                {
+                    web.Headers.Add("Accept:*/*");
+                    web.Headers.Add("Content-type:application/x-www-form-urlencoded");
 
-                var data = JsonConvert.SerializeObject(obj).ToString();
-                var resp = web.UploadValues(url, "Post", obj);
-                //var resp1= web.UploadData(url,"Post");
-                var str = Encoding.ASCII.GetString(resp);
-                var token = JsonConvert.DeserializeObject<Token>(str).access_token;
-                web.Headers.Add("Accept:*/*");
-                web.Headers.Add($"Authorization:Bearer {token}");
-                var dash = web.DownloadString(getdetails);
-                var userdata = JsonConvert.DeserializeObject<UserManagement>(dash);
+                    var data = JsonConvert.SerializeObject(obj).ToString();
+                    var resp = web.UploadValues(url, "Post", obj);
+                    //var resp1= web.UploadData(url,"Post");
+                    var str = Encoding.ASCII.GetString(resp);
+                    var token = JsonConvert.DeserializeObject<Token>(str).access_token;
+                    web.Headers.Add("Accept:*/*");
+                    web.Headers.Add($"Authorization:Bearer {token}");
+                    var dash = web.DownloadString(getdetails);
+                    var userdata = JsonConvert.DeserializeObject<UserManagement>(dash);
 
-                Session["token"] = token;
-                Session["username"] = userdata.UserName;
-                Session["role"] = userdata.Role;
-                Session["email"] = userdata.EmailId;
+                    Session["token"] = token;
+                    Session["username"] = userdata.UserName;
+                    Session["role"] = userdata.Role;
+                    Session["email"] = userdata.EmailId;
 
-                TempData["token"] = token;
+                    TempData["token"] = token;
 
-                HttpCookie cook = new HttpCookie("UserData");
-                cook["Name"] = userdata.UserName;
-                cook["role"] = userdata.Role;
-                cook["email"] = userdata.EmailId;
+                    HttpCookie cook = new HttpCookie("UserData");
+                    cook["Name"] = userdata.UserName;
+                    cook["role"] = userdata.Role;
+                    cook["email"] = userdata.EmailId;
 
-                Response.Cookies.Add(cook);
+                    Response.Cookies.Add(cook);
 
 
+                }
+                return RedirectToActionPermanent("Index", Session["role"].ToString());
             }
-
-            
-
-            return RedirectToActionPermanent("Index", Session["role"].ToString());
+            catch(WebException httpex)
+            {
+                var resp = (HttpWebResponse)httpex.Response;
+                if(resp.StatusCode == HttpStatusCode.BadRequest)
+                {
+                    ViewBag.Message = "Invalid Username or Password";
+                    return View();
+                }
+            }
+            return View();
 
         }
 

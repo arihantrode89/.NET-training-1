@@ -58,10 +58,14 @@ function Logout() {
 }
 
 $(document).ready(function () {
-            
+
+    $("#uploadform").attr("action", "https://localhost:44347/File");
     $("#NameLbl").text(sessionStorage.getItem("UserName"));
     $("#EmailLbl").text(sessionStorage.getItem("Email"));
     $("#RoleLbl").text(sessionStorage.getItem("Role"));
+
+    
+    
 
     
 })
