@@ -6,6 +6,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using TokenApi.Models;
@@ -21,7 +22,7 @@ namespace LoginMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string UserName, string Password)
+        public async Task<ActionResult> Login(string UserName, string Password)
         {
             string url = "https://localhost:44347/token";
             string getdetails = "https://localhost:44347/getdetails";
@@ -39,13 +40,14 @@ namespace LoginMVC.Controllers
                     web.Headers.Add("Content-type:application/x-www-form-urlencoded");
 
                     var data = JsonConvert.SerializeObject(obj).ToString();
-                    var resp = web.UploadValues(url, "Post", obj);
+                    var resp = await web.UploadValuesTaskAsync(url, "Post", obj);
+                    
                     //var resp1= web.UploadData(url,"Post");
                     var str = Encoding.ASCII.GetString(resp);
                     var token = JsonConvert.DeserializeObject<Token>(str).access_token;
                     web.Headers.Add("Accept:*/*");
                     web.Headers.Add($"Authorization:Bearer {token}");
-                    var dash = web.DownloadString(getdetails);
+                    var dash = await web.DownloadStringTaskAsync(getdetails);
                     var userdata = JsonConvert.DeserializeObject<UserManagement>(dash);
 
                     Session["token"] = token;

@@ -27,6 +27,7 @@ namespace TokenApi.Controllers
         public UserManagement Admin()
         {
             var user = User.Identity;
+            var str = "Hi";
             return db.UserManagements.FirstOrDefault(s => s.UserName == user.Name);
         }
 

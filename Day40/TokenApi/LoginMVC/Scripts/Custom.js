@@ -58,12 +58,23 @@ function Logout() {
 }
 
 $(document).ready(function () {
-
-    $("#uploadform").attr("action", "https://localhost:44347/File");
+    
+    
     $("#NameLbl").text(sessionStorage.getItem("UserName"));
     $("#EmailLbl").text(sessionStorage.getItem("Email"));
     $("#RoleLbl").text(sessionStorage.getItem("Role"));
 
+    const forms = $(".needs-validation");
+    $.each(forms, function (item, form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
+
+    });
     
     
 

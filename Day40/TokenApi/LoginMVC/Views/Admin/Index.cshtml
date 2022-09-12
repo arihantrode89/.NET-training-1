@@ -17,6 +17,7 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="~/Scripts/Custom.js"></script>
+    
 </head>
 <body style="background-color:black">
     <section class="mt-3 pt-3">
@@ -44,21 +45,34 @@
                         File Upload
                     </div>
                     <div class="card-body">
-                        <form action="https://localhost:44347/File" method="post" id="uploadform" enctype="multipart/form-data">
+                        <form class="needs-validation" action="https://localhost:44347/File" method="post" id="uploadform" enctype="multipart/form-data" novalidate>
                             <div class="row px-2 py-2 mb-2">
                                 <div class="col py-2">
-                                    <input id="imgfile" type="file" name="inputImg" class="form-control" />
+                                    <input id="imgfile" type="file" name="inputImg" class="form-control" required />
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Choose File
+                                    </div>
                                 </div>
                                 
                             </div>
                             <div class="row px-2 py-2 mb-2">
                                 <div class="col py-2">
-                                    <input id="pdf file" type="file" name="inputPdf" class="form-control" />
+                                    <input id="pdf file" type="file" name="inputPdf" class="form-control" required />
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Choose File
+                                    </div>
                                 </div>
+                                
                             </div>
 
                             <div class="mx-auto d-grid col-3">
-                                <button tyoe="submut" id="uploadbtn" class="btn btn-primary">Upload</button>
+                                <button type="submit" id="uploadbtn" class="btn btn-primary">Upload</button>
                             </div>
                         </form>
                     </div>
