@@ -27,7 +27,7 @@ namespace Delegate_event_revise
 
         public void NameChangeMethod(string old,string newname)
         {
-            Console.WriteLine($"Employee Name change from {old} to {newname}");
+            Console.WriteLine($"Employee Name change from {old} to {newname} for {SubscriberId}");
         }
 
         public void Unsubscribe()
@@ -40,16 +40,20 @@ namespace Delegate_event_revise
     }
     public class Employee
     {
-        string firstname="Akshay";
+        string firstname;
         string lastname;
 
+        public Employee(string fname)
+        {
+            firstname = fname;
+        }
         public event NameChangeDelegate OnNameChange;
-
+        private NameChangeDelegate OnNameChangeMethod;
         public event NameChangeDelegate OnNameChanged
         {
             add
             {
-                OnNameChange += value;
+                OnNameChangeMethod += value;
                 if(value.Target is Subscriber)
                 {
                     Console.WriteLine($"{((Subscriber)value.Target).SubscriberId} is just subscirbed to OnNameChanged event");
@@ -57,7 +61,7 @@ namespace Delegate_event_revise
             }
             remove
             {
-                OnNameChange -= value;
+                OnNameChangeMethod -= value;
                 if (value.Target is Subscriber)
                 {
                     Console.WriteLine($"{((Subscriber)value.Target).SubscriberId} is just unsubscirbed to OnNameChanged event");
@@ -69,7 +73,7 @@ namespace Delegate_event_revise
             get { return firstname; }
             set
             {
-                OnNameChange(firstname, value);
+                OnNameChangeMethod(firstname, value);
                 firstname = value;
                 
             }
@@ -89,7 +93,7 @@ namespace Delegate_event_revise
 
         static void Main(string[] args)
         {
-            Employee emp = new Employee();
+            Employee emp = new Employee("Appi");
             Subscriber s1 = new Subscriber("s-101", emp);
             Subscriber s2 = new Subscriber("s-102", emp);
             Subscriber s3 = new Subscriber("s-103", emp);
